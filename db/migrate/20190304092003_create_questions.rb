@@ -3,6 +3,7 @@ class CreateQuestions < ActiveRecord::Migration[5.2]
     create_table :questions do |t|
       t.string :title, null: false
       t.text :content, default: ""
+      t.references :user, index: true, foreign_key: true
 
       t.timestamps
     end
