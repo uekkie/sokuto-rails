@@ -44,6 +44,6 @@ class QuestionsController < ApplicationController
     end
 
     def question_params
-      params.fetch(:question, {})
+      params.require(:question).permit(:title, :content, :tag_list)
     end
 end

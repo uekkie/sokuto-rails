@@ -1,6 +1,12 @@
-%p#notice= notice
 
+%h1=@question.title
 
+%ul.list-group
+  - @question.tag_list.each do |tag|
+    %li.list-group-item= tag
+
+.container
+  =@question.content
 = link_to 'Edit', edit_question_path(@question)
 \|
 = link_to 'Back', questions_path

@@ -5,6 +5,12 @@
       %ul
         - @question.errors.full_messages.each do |message|
           %li= message
+  .field
+    = f.text_field :title, placeholder: "質問のタイトル", class: 'form-control'
+  .field.mt-1
+    = f.text_field :tag_list, placeholder: "タグ", class: 'form-control'
+  .field
+    = f.text_area :content, placeholder: "質問の内容", class: 'form-control'
 
   .actions
     = f.submit 'Save'
