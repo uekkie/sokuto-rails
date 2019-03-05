@@ -9,6 +9,12 @@ class QuestionsController < ApplicationController
   def show
   end
 
+  def tagged
+    @user ||= current_user if user_signed_in?
+    @tag_name = params[:tagname]
+    @questions = Question.tagged_with(@tag_name).order(created_at: :desc)
+  end
+
   private
     def set_question
       @question = Question.find(params[:id])
