@@ -29,5 +29,7 @@ module SokutoRails
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    ActsAsTaggableOn.remove_unused_tags = true
   end
 end

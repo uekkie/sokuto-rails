@@ -1,12 +1,16 @@
-
 %h1=@question.title
 
-%ul.list-group
-  - @question.tag_list.each do |tag|
-    %li.list-group-item= tag
+=render "tag_list", tags: @question.tag_list
 
-.container
-  =@question.content
-= link_to '編集', edit_user_question_path(current_user, @question)
-\|
-= link_to 'もどる', user_questions_path
+.container.mt-2
+  .content=@question.content
+
+  - if current_user == @question.user
+    = link_to '編集', edit_user_question_path(current_user, @question)
+    \|
+    = link_to '削除',
+         user_question_path(@question.user, @question),
+         method: :delete, data: { confirm: 'よろしいですか？' }
+    \|
+  = link_to '質問一覧', questions_path
+

@@ -1,0 +1,5 @@
+%h1= @user.name
+
+= @user.email
+
+= render "questions/question_list", questions: @user.questions
