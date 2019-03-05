@@ -2,7 +2,6 @@ class Users::QuestionsController < ApplicationController
   before_action :set_question, only: %i(edit update destroy)
 
   def new
-    @user = current_user
     @question = Question.new
   end
 
@@ -14,7 +13,7 @@ class Users::QuestionsController < ApplicationController
     @question = current_user.questions.build(question_params)
 
     if @question.save
-      redirect_to @question, notice: '質問を作成しました'
+      redirect_to @question, notice: "質問「#{@question.title}」を作成しました"
     else
       render :new
     end
@@ -22,7 +21,7 @@ class Users::QuestionsController < ApplicationController
 
   def update
     if @question.update(question_params)
-      redirect_to @question, notice: '質問を更新しました'
+      redirect_to @question, notice: "質問「#{@question.title}」を更新しました"
     else
       render :edit
     end
@@ -30,7 +29,7 @@ class Users::QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-    redirect_to questions_url, notice: '質問を削除しました'
+    redirect_to questions_url, notice: "質問「#{@question.title}」を削除しました"
   end
 
   private
