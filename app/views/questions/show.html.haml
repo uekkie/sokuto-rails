@@ -8,4 +8,9 @@
   - if current_user == @question.user
     = link_to '編集', edit_user_question_path(current_user, @question)
     \|
-  = link_to 'もどる', :back
+    = link_to '削除',
+         user_question_path(@question.user, @question),
+         method: :delete, data: { confirm: 'よろしいですか？' }
+    \|
+  = link_to '質問一覧', questions_path
+
