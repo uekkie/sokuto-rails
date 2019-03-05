@@ -22,9 +22,10 @@ gem 'acts-as-taggable-on', '~> 6.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry-rails'
   gem 'pry-byebug'
   gem 'better_errors'
-  gem 'pry-rails'
+  gem 'binding_of_caller'
   gem 'bullet'
 end
 
@@ -34,4 +35,5 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'faker'
+  gem 'rails-erd'
 end
