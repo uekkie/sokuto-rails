@@ -1,5 +1,5 @@
 class Users::QuestionsController < ApplicationController
-  before_action :set_question, only: [:edit, :update, :destroy]
+  before_action :set_question, only: %i(edit update destroy)
 
   def new
     @user = current_user
@@ -14,7 +14,7 @@ class Users::QuestionsController < ApplicationController
     @question = current_user.questions.build(question_params)
 
     if @question.save
-      redirect_to @question, notice: 'Question was successfully created.'
+      redirect_to @question, notice: '質問を作成しました'
     else
       render :new
     end
@@ -22,7 +22,7 @@ class Users::QuestionsController < ApplicationController
 
   def update
     if @question.update(question_params)
-      redirect_to @question, notice: 'Question was successfully updated.'
+      redirect_to @question, notice: '質問を更新しました'
     else
       render :edit
     end
@@ -30,7 +30,7 @@ class Users::QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-    redirect_to questions_url, notice: 'Question was successfully destroyed.'
+    redirect_to questions_url, notice: '質問を削除しました'
   end
 
   private

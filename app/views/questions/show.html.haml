@@ -1,10 +1,11 @@
-
 %h1=@question.title
 
 =render "tag_list", tags: @question.tag_list
 
-.container
-  =@question.content
-= link_to '編集', edit_user_question_path(current_user, @question)
-\|
-= link_to 'もどる', user_path(@question.user)
+.container.mt-2
+  .content=@question.content
+
+  - if current_user == @question.user
+    = link_to '編集', edit_user_question_path(current_user, @question)
+    \|
+  = link_to 'もどる', :back

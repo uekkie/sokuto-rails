@@ -1,7 +1,6 @@
 %ul.list-group
   - if user_signed_in?
     %li
-      =link_to '質問を書く', new_user_question_path(current_user)
       =link_to 'ログアウト', destroy_user_session_path, method: :delete
   - else
     %li
