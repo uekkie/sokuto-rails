@@ -1,9 +1,12 @@
-[1..100].each do |n|
+users=[]
+100.times do |n|
   name  = Faker::Name.name
-  email = "user#{n}@test.com"
+  email = "user#{n+1}@test.com"
   password = "aaaaaa"
-  User.create!(name:  name,
+  users << User.new(name:  name,
                email: email,
                password:              password,
                password_confirmation: password)
 end
+
+User.import users
