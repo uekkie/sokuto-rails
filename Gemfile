@@ -25,6 +25,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'better_errors'
   gem 'pry-rails'
+  gem 'bullet'
 end
 
 group :development do
