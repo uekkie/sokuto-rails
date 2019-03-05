@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
   resources :tags, only: %i(index)
 
-  resources :users do
-    resources :questions, module: :users
+  resources :users, only: %i(index show) do
+    resources :questions, module: :users, only: %i(new edit create update destroy)
   end
 end
