@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'tags/show'
+  get 'tags/index'
   root to: "questions#index"
   devise_for :users
 
