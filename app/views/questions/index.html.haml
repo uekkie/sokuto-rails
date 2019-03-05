@@ -1,15 +1,1 @@
-%table
-  %thead
-    %tr
-      %th
-      %th
-      %th
-
-  %tbody
-    - @questions.each do |question|
-      %tr
-        %td= link_to question.title, question
-        %td
-          - if current_user == question.user
-            = link_to '編集', edit_user_question_path(current_user, question)
-        %td= link_to '削除', question, method: :delete, data: { confirm: 'よろしいですか？' }
+=render "question_list", questions: @questions

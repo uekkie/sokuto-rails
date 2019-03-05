@@ -1,0 +1,16 @@
+= form_with( model: [user, question], local: true) do |f|
+  - if question.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(question.errors.count, "error")} prohibited this question from being saved:"
+      %ul
+        - question.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.text_field :title, placeholder: "質問のタイトル", class: 'form-control'
+  .field.mt-1
+    = text_field_tag 'question[tag_list]', question.tag_list.join(","), placeholder: "タグ（カンマで区切ります）", class: 'form-control'
+  .field
+    = f.text_area :content, placeholder: "質問の内容", class: 'form-control'
+
+  .actions
+    = f.submit 'Save'

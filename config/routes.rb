@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   resources :tags, only: %i(index show)
 
   resources :users do
-    resources :questions
+    resources :questions, module: :users
   end
 end

@@ -1,12 +1,10 @@
 
 %h1=@question.title
 
-%ul.list-group
-  - @question.tag_list.each do |tag|
-    %li.list-group-item= tag
+=render "tag_list", tags: @question.tag_list
 
 .container
   =@question.content
 = link_to '編集', edit_user_question_path(current_user, @question)
 \|
-= link_to 'もどる', user_questions_path
+= link_to 'もどる', user_path(@question.user)
