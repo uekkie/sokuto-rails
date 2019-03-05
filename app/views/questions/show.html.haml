@@ -1,0 +1,12 @@
+
+%h1=@question.title
+
+%ul.list-group
+  - @question.tag_list.each do |tag|
+    %li.list-group-item= tag
+
+.container
+  =@question.content
+= link_to '編集', edit_user_question_path(current_user, @question)
+\|
+= link_to 'もどる', user_questions_path
