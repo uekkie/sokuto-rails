@@ -1,2 +1,3 @@
-%h1 Tags#index
-%p Find me in app/views/tags/index.html.haml
+%ul.list-group
+  - @tags.each do |tag|
+    %li.list-group-item= tag.name
