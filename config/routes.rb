@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root to: "questions#index"
-  devise_for :users
+  devise_for :users, controllers: {
+      registrations: 'users/registrations'
+  }
 
   resources :questions, only: %i(index show) do
     collection do
