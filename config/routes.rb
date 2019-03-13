@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :tags, only: %i(index)
 
   resources :users, only: %i(index show) do
-    resources :questions, module: :users, only: %i(new edit create update destroy)
+    resources :questions, module: :users, only: %i(new edit create update destroy) do
+      resources :answers
+    end
   end
 end

@@ -12,5 +12,11 @@
          user_question_path(@question.user, @question),
          method: :delete, data: { confirm: 'よろしいですか？' }
     \|
+  %hr/
+  =render @question.answers
+
+  - if user_signed_in?
+    =render template: 'answers/new'
+  %hr/
   = link_to '質問一覧', questions_path
 
