@@ -7,6 +7,8 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    @answer = Answer.new
+    @user = current_user
   end
 
   def tagged
