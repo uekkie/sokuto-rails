@@ -13,7 +13,7 @@
          method: :delete, data: { confirm: 'よろしいですか？' }
     \|
   %hr/
-  =render @question.answers
+  =render 'answers/answer_list', question: @question
 
   - if user_signed_in?
     =render template: 'answers/new'

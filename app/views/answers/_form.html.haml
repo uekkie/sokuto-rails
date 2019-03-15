@@ -1,11 +1,11 @@
-= form_with(model: [user, question, answer], local: true) do |form|
+= form_with(model: [question, answer], local: true) do |f|
   - if answer.errors.any?
     #error_explanation.alert.alert-danger
       %ul
-        - item.errors.full_messages.each do |message|
+        - answer.errors.full_messages.each do |message|
           %li #{message}
 
   .field
-    = form.text_area :context, id: :answer_body, placeholder: "回答", class: 'form-control'
+    = f.text_area :content, id: :answer_body, placeholder: "回答", class: 'form-control'
   .actions.text-right
-    = form.submit (yield :submit_label), class: 'btn btn-primary mt-1'
+    = f.submit (yield :submit_label), class: 'btn btn-primary mt-1'
