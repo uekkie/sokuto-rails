@@ -9,11 +9,14 @@ Rails.application.routes.draw do
       get 'tagged/:tagname', to: 'questions#tagged'
     end
   end
+
   resources :tags, only: %i(index)
 
   resources :users, only: %i(index show) do
-    resources :questions, module: :users, only: %i(new edit create update destroy) do
-      resources :answers
-    end
+    resources :questions, only: %i(new create edit update destroy)
+  end
+
+  resources :questions , only: %i(show index)do
+    resources :answers, only: %i(new create)
   end
 end

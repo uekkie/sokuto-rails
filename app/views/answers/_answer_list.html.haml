@@ -1,0 +1,9 @@
+%ul.list-group
+  - question.answers.order(:created_at).includes(:user).each do |answer|
+    %li.list-group-item
+      - user = answer.user
+      = link_to user.name, user_path(user)
+      = l answer.created_at
+      %br
+      = answer.content
+%br

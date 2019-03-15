@@ -1,4 +1,4 @@
-class Users::QuestionsController < ApplicationController
+class QuestionsController < ApplicationController
   before_action :set_question, only: %i(edit update destroy)
 
   def new
