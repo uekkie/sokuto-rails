@@ -16,8 +16,9 @@
   =render 'answers/answer_list', question: @question
 
   - if user_signed_in?
+    =  "👍 #{@question.get_upvotes.size} / 👎 #{@question.get_downvotes.size}"
     = link_to "upvote", upvote_loggedin_question_path(@question), method: :put
-    -#= link_to "upvote", vote_link_path, method: :put
+    = link_to "downvote", downvote_loggedin_question_path(@question), method: :put
 
     =render template: 'answers/new'
   %hr/

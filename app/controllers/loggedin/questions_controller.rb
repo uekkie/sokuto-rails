@@ -1,5 +1,5 @@
 class Loggedin::QuestionsController < ApplicationController
-  before_action :set_question, only: %i(edit update destroy upvote)
+  before_action :set_question, only: %i(edit update destroy upvote downvote)
 
   def new
     @question = Question.new
@@ -34,6 +34,11 @@ class Loggedin::QuestionsController < ApplicationController
 
   def upvote
     @question.upvote_by current_user
+    redirect_to question_url(@question)
+  end
+
+  def downvote
+    @question.downvote_by current_user
     redirect_to question_url(@question)
   end
 
