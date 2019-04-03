@@ -1,4 +1,4 @@
-class Users::QuestionsController < ApplicationController
+class Loggedin::QuestionsController < ApplicationController
   before_action :set_question, only: %i(edit update destroy upvote)
 
   def new

@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 
   resources :tags, only: %i(index)
 
-  resources :users, only: %i(index show) do
+  resources :users, only: %i(index show)
+
+  namespace :loggedin do
     resources :questions, only: %i(new create edit update destroy) do
       member do
         put "upvote", to: "questions#upvote"
