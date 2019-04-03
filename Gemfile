@@ -19,6 +19,7 @@ gem 'haml-rails'
 gem 'bootstrap', '4.3.1'
 gem 'rails-i18n', '~> 5.1'
 gem 'acts-as-taggable-on', '~> 6.0'
+gem 'acts_as_votable'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
