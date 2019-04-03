@@ -16,6 +16,9 @@
   =render 'answers/answer_list', question: @question
 
   - if user_signed_in?
+    = link_to "upvote", upvote_question_path, method: :put
+    -#= link_to "upvote", vote_link_path, method: :put
+
     =render template: 'answers/new'
   %hr/
   = link_to '質問一覧', questions_path

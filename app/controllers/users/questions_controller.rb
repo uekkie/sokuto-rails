@@ -1,5 +1,5 @@
-class QuestionsController < ApplicationController
-  before_action :set_question, only: %i(edit update destroy)
+class Users::QuestionsController < ApplicationController
+  before_action :set_question, only: %i(edit update destroy upvote)
 
   def new
     @question = Question.new
@@ -30,6 +30,11 @@ class QuestionsController < ApplicationController
   def destroy
     @question.destroy
     redirect_to questions_url, notice: "質問「#{@question.title}」を削除しました"
+  end
+
+  def upvote
+    @question.upvote_by current_user
+    redirect_to question_url(@question)
   end
 
   private
