@@ -5,7 +5,7 @@
       = link_to question.title, question
     - if current_user == question.user
       .col-3
-        = link_to '編集', edit_user_question_path(question.user, question)
+        = link_to '編集', edit_loggedin_question_path(question.user, question)
         = link_to '削除',
-         user_question_path(question.user, question),
+         loggedin_question_path(question.user, question),
          method: :delete, data: { confirm: 'よろしいですか？' }

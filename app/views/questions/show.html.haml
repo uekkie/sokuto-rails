@@ -6,16 +6,20 @@
   .content=@question.content
 
   - if current_user == @question.user
-    = link_to '編集', edit_user_question_path(current_user, @question)
+    = link_to '編集', edit_loggedin_question_path(@question)
     \|
     = link_to '削除',
-         user_question_path(@question.user, @question),
+         loggedin_question_path(@question),
          method: :delete, data: { confirm: 'よろしいですか？' }
     \|
   %hr/
   =render 'answers/answer_list', question: @question
 
   - if user_signed_in?
+    =  "👍 #{@question.get_upvotes.size} / 👎 #{@question.get_downvotes.size}"
+    = link_to "upvote", upvote_loggedin_question_path(@question), method: :put
+    = link_to "downvote", downvote_loggedin_question_path(@question), method: :put
+
     =render template: 'answers/new'
   %hr/
   = link_to '質問一覧', questions_path

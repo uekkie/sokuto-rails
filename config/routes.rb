@@ -12,8 +12,15 @@ Rails.application.routes.draw do
 
   resources :tags, only: %i(index)
 
-  resources :users, only: %i(index show) do
-    resources :questions, only: %i(new create edit update destroy)
+  resources :users, only: %i(index show)
+
+  namespace :loggedin do
+    resources :questions, only: %i(new create edit update destroy) do
+      member do
+        put "upvote", to: "questions#upvote"
+        put "downvote", to: "questions#downvote"
+      end
+    end
   end
 
   resources :questions , only: %i(show index)do
