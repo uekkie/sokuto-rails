@@ -35,7 +35,7 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = {host: 'localhost', port: 3000}
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -60,4 +60,12 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+  config.after_initialize do
+    Bullet.enable = true # Bulletを有効化
+    Bullet.alert = true # JavaScriptのポップアップアラートを有効化
+    Bullet.bullet_logger = true # Rails.root/log/bullet.logに出力
+    Bullet.console = true # ブラウザのconsole.logに出力
+    Bullet.rails_logger = true # Railsのログに結果を出力
+    Bullet.add_footer = true # ページの左下に結果を表示
+  end
 end
