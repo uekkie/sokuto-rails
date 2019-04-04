@@ -1,0 +1,5 @@
+- provide :submit_label, "更新する"
+
+= render 'form', user: current_user, question: @question
+
+= link_to 'キャンセル', question_path(@question)
