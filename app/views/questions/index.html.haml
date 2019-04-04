@@ -8,4 +8,24 @@
     .col-5
       %h3 すべての質問
 %hr
-=render "question_list", questions: @questions
+
+  %ul.nav.nav-tabs{role:"tablist"}
+    %li.nav-item.active{role: "presentation"}
+      %a.nav-link{aria:{controls:"tab_a"}, data:{toggle:"tab"}, href: "#tab_a", role: "tab"}
+        新着
+    %li.nav-item{role:"presentation"}
+      %a.nav-link{aria:{controls:"tab_b"}, data:{toggle:"tab"}, href: "#tab_b", role: "tab"}
+        得票数
+    %li.nav-item{role:"presentation"}
+      %a.nav-link{aria:{controls:"tab_c"}, data:{toggle:"tab"}, href: "#tab_c", role: "tab"}
+        未回答
+  .tab-content
+    .tab-pane#tab_a{role:"tabpanel"}
+      %p
+        =render "question_list", questions: @questions
+    .tab-pane#tab_b.active{role:"tabpanel"}
+      %p
+        TODO:得票数
+    .tab-pane#tab_c{role:"tabpanel"}
+      %p
+        TODO:未回答
