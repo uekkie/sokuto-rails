@@ -1,4 +1,4 @@
-= form_with( model: [user, question], local: true) do |f|
+= form_with( model: [:loggedin, question], local: true) do |f|
   - if question.errors.any?
     #error_explanation
       %h2= "#{pluralize(question.errors.count, "error")} prohibited this question from being saved:"
@@ -13,4 +13,5 @@
     = f.text_area :content, placeholder: "質問の内容", class: 'form-control'
 
   .actions
-    = f.submit 'Save'
+    = f.submit (yield :submit_label), class: 'btn btn-primary mt-1'
+
