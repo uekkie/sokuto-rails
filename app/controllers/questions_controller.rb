@@ -4,6 +4,7 @@ class QuestionsController < ApplicationController
   def index
     @questions = Question.all.includes(:user).order(created_at: :desc)
     @weighted_total_questions = Question.all.order(cached_weighted_total: :desc)
+    @no_answers_questions = Question.all.where(answers_count: 0).order(created_at: :desc)
   end
 
   def show

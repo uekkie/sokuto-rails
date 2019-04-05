@@ -28,4 +28,4 @@
         =render "question_list", questions: @weighted_total_questions
     .tab-pane#tab_c{role:"tabpanel"}
       %p
-        TODO:未回答
+        =render "question_list", questions: @no_answers_questions
