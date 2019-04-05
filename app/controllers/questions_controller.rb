@@ -3,6 +3,7 @@ class QuestionsController < ApplicationController
 
   def index
     @questions = Question.all.includes(:user).order(created_at: :desc)
+    @weighted_total_questions = Question.all.order(cached_weighted_total: :desc)
   end
 
   def show

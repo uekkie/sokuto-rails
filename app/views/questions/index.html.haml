@@ -25,7 +25,7 @@
         =render "question_list", questions: @questions
     .tab-pane#tab_b.active{role:"tabpanel"}
       %p
-        TODO:得票数
+        =render "question_list", questions: @weighted_total_questions
     .tab-pane#tab_c{role:"tabpanel"}
       %p
         TODO:未回答
