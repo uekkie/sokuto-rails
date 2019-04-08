@@ -13,7 +13,12 @@ class Question < ApplicationRecord
   scope :weighted_total, -> {
     order(cached_weighted_total: :desc)
   }
+
   scope :no_answers, -> {
     where(answers_count: 0).order(created_at: :desc)
+  }
+
+  scope :with_tagged_questions, lambda { |tag_name|
+    includes(:user).tagged_with(tag_name).order(created_at: :desc)
   }
 end

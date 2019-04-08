@@ -2,7 +2,6 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: %i(show edit update destroy)
 
   def index
-    @questions = Question.all
   end
 
   def show
@@ -11,7 +10,6 @@ class QuestionsController < ApplicationController
 
   def tagged
     @tag_name = params[:tag_name]
-    @questions = Question.tagged_with(@tag_name).order(created_at: :desc)
   end
 
   private
