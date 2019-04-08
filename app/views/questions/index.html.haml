@@ -9,7 +9,7 @@
       %h3 すべての質問
 %hr
 
-  %ul.nav.nav-tabs{role:"tablist"}
+  %ul.nav.nav-tabs{role:"tab_list"}
     %li.nav-item.active{role: "presentation"}
       %a.nav-link{aria:{controls:"tab_a"}, data:{toggle:"tab"}, href: "#tab_a", role: "tab"}
         新着
@@ -20,12 +20,12 @@
       %a.nav-link{aria:{controls:"tab_c"}, data:{toggle:"tab"}, href: "#tab_c", role: "tab"}
         未回答
   .tab-content
-    .tab-pane#tab_a{role:"tabpanel"}
+    .tab-pane#tab_a{role:"tab_panel"}
       %p
-        =render "question_list", questions: @questions
-    .tab-pane#tab_b.active{role:"tabpanel"}
+        =render "question_list", questions: Question.recent_with_user
+    .tab-pane#tab_b.active{role:"tab_panel"}
       %p
-        =render "question_list", questions: @weighted_total_questions
-    .tab-pane#tab_c{role:"tabpanel"}
+        =render "question_list", questions: Question.weighted_total
+    .tab-pane#tab_c{role:"tab_panel"}
       %p
-        =render "question_list", questions: @no_answers_questions
+        =render "question_list", questions: Question.no_answers
