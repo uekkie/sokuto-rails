@@ -22,10 +22,10 @@
   .tab-content
     .tab-pane#tab_a{role:"tabpanel"}
       %p
-        =render "question_list", questions: @questions
+        =render "question_list", questions: @questions.recent_with_user
     .tab-pane#tab_b.active{role:"tabpanel"}
       %p
-        =render "question_list", questions: @weighted_total_questions
+        =render "question_list", questions: @questions.weighted_total
     .tab-pane#tab_c{role:"tabpanel"}
       %p
-        =render "question_list", questions: @no_answers_questions
+        =render "question_list", questions: @questions.no_answers
