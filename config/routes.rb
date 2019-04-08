@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :questions, only: %i(index show) do
     collection do
-      get 'tagged/:tagname', to: 'questions#tagged'
+      get 'tagged/:tag_name', to: 'questions#tagged'
     end
     resources :answers, only: %i(new create)
   end

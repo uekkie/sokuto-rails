@@ -13,8 +13,7 @@ class QuestionsController < ApplicationController
   end
 
   def tagged
-    # TODO: tag_nameにする
-    @tag_name = params[:tagname]
+    @tag_name = params[:tag_name]
     @questions = Question.tagged_with(@tag_name).order(created_at: :desc)
   end
 

@@ -2,4 +2,4 @@
   - @tags.each do |tag|
     %li.list-group-item
       =link_to tag.name,
-      { tagname: tag.name, controller: "questions", action: "tagged" }
+      { tag_name: tag.name, controller: "questions", action: "tagged" }
