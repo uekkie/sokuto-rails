@@ -1,11 +1,21 @@
-= "#{questions.count} 件の質問"
-- questions.each do |question|
+%strong= "#{questions.count} 件の質問"
+
+- questions.includes(:taggings).each do |question|
   .row
-    .col-7
-      = link_to question.title, question
-    - if current_user == question.user
-      .col-3
-        = link_to '編集', edit_loggedin_question_path(question)
-        = link_to '削除',
-         loggedin_question_path(question),
-         method: :delete, data: { confirm: 'よろしいですか？' }
+    .col-2
+      .row
+        %strong= question.cached_weighted_score
+        票
+      .row
+        %strong= question.answers_count
+        回答
+    .col-10
+      .title= link_to question.title, question
+      .body= question.truncated_content
+      .row
+        .col-5
+          .tags= render "shared/tag_list", tags: question.tag_list
+        .col-5
+          .published_at= "質問日時: #{question.humanize_created_at}"
+          .user_stat= render "shared/user_stat", user: question.user
+  %hr

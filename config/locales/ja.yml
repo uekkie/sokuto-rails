@@ -1,0 +1,7 @@
+ja:
+  time:
+    formats:
+      short: "%-m月%-d日 %-H:%-M"
+      short_slash: "%Y/%m/%d"
+      within_hour: "%-M分前"
+      within_day: "%-H時間前"
