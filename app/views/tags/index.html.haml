@@ -1,8 +1,10 @@
 -# TODO: 4*9で並べる
 -# TODO: タグ名で絞り込む機能
 -# TODO: 新規、名前、人気の一覧ができる
-%ul.list-group
-  - @tags.each do |tag|
-    %li.list-group-item
-      =link_to tag.name,
-      { tag_name: tag.name, controller: "questions", action: "tagged" }
+
+- @tags.each_slice(4) do |tag1, tag2, tag3, tag4|
+  .row
+    .col=link_to tag1.name, { tag_name: tag1.name, controller: "questions", action: "tagged" }
+    .col=link_to tag2.name, { tag_name: tag2.name, controller: "questions", action: "tagged" }
+    .col=link_to tag3.name, { tag_name: tag3.name, controller: "questions", action: "tagged" }
+    .col=link_to tag4.name, { tag_name: tag4.name, controller: "questions", action: "tagged" }
