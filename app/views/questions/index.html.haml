@@ -10,8 +10,8 @@
 %hr
 
   %ul.nav.nav-tabs{role:"tab_list"}
-    %li.nav-item.active{role: "presentation"}
-      %a.nav-link{aria:{controls:"tab_a"}, data:{toggle:"tab"}, href: "#tab_a", role: "tab"}
+    %li.nav-item{role: "presentation"}
+      %a.nav-link.active{aria:{controls:"tab_a", selected: true}, data:{toggle:"tab"}, href: "#tab_a", role: "tab"}
         新着
     %li.nav-item{role:"presentation"}
       %a.nav-link{aria:{controls:"tab_b"}, data:{toggle:"tab"}, href: "#tab_b", role: "tab"}
@@ -20,10 +20,10 @@
       %a.nav-link{aria:{controls:"tab_c"}, data:{toggle:"tab"}, href: "#tab_c", role: "tab"}
         未回答
   .tab-content
-    .tab-pane#tab_a{role:"tab_panel"}
+    .tab-pane#tab_a.active{role:"tab_panel"}
       %p
         =render "question_list", questions: Question.recent_with_user
-    .tab-pane#tab_b.active{role:"tab_panel"}
+    .tab-pane#tab_b{role:"tab_panel"}
       %p
         =render "question_list", questions: Question.weighted_total
     .tab-pane#tab_c{role:"tab_panel"}
