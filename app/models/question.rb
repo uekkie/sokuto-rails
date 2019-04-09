@@ -25,4 +25,15 @@ class Question < ApplicationRecord
   def truncated_content
     content.truncate(40)
   end
+
+  def humanize_created_at
+    elapsed_at = Time.now - created_at
+
+    return I18n.l(created_at, format: :within_hour) if elapsed_at < 1.hour
+    return I18n.l(created_at, format: :within_day) if elapsed_at < 1.day
+    return "昨日" if elapsed_at < 2.day
+    return "2日前" if elapsed_at < 3.day
+
+    I18n.l(created_at, format: :short)
+  end
 end
