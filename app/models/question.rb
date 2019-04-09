@@ -7,7 +7,7 @@ class Question < ApplicationRecord
   has_many :answers, dependent: :destroy
 
   scope :recent_with_user, -> {
-    includes(:user).order(created_at: :desc)
+    includes([:user, :taggings]).order(created_at: :desc)
   }
 
   scope :weighted_total, -> {
@@ -21,4 +21,8 @@ class Question < ApplicationRecord
   scope :with_tagged_questions, lambda { |tag_name|
     includes(:user).tagged_with(tag_name).order(created_at: :desc)
   }
+
+  def truncated_content
+    content.truncate(40)
+  end
 end
