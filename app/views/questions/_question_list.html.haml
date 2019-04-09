@@ -16,5 +16,6 @@
         .col-5
           .tags= render "tag_list", tags: question.tag_list
         .col-5
-          .user_stat= question.user.name
+          .published_at= "質問日時: #{l question.created_at, format: :short_slash}"
+          .user_stat= render "shared/user_stat", user: question.user
   %hr

@@ -1,0 +1,5 @@
+ja:
+  time:
+    formats:
+      short: "%Y年%m月%d日"
+      short_slash: "%Y/%m/%d"
