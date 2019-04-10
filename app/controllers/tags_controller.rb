@@ -1,5 +1,6 @@
 class TagsController < ApplicationController
   def index
-    @tags = ActsAsTaggableOn::Tag.most_used
+    @q = ActsAsTaggableOn::Tag.ransack(params[:q])
+    @tags = @q.result.page(params[:page])
   end
 end
