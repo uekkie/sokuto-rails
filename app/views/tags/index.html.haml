@@ -1,10 +1,20 @@
--# TODO: 4*9で並べる
--# TODO: タグ名で絞り込む機能
 -# TODO: 新規、名前、人気の一覧ができる
+= search_form_for @q, url: tags_path do |f|
+  .field
+    = f.label :name_cont, 'タグ名'
+    = f.search_field :name_cont, class: 'form-control'
+  .actions
+    = f.submit '絞り込む', class: 'btn btn-primary mt-1'
+    - if @q.conditions.present?
+      = link_to '解除', tags_path, class: 'btn btn-danger mt-1'
 
 - @tags.each_slice(4) do |tag1, tag2, tag3, tag4|
   .row
-    .col=link_to tag1.name, { tag_name: tag1.name, controller: "questions", action: "tagged" }
-    .col=link_to tag2.name, { tag_name: tag2.name, controller: "questions", action: "tagged" }
-    .col=link_to tag3.name, { tag_name: tag3.name, controller: "questions", action: "tagged" }
-    .col=link_to tag4.name, { tag_name: tag4.name, controller: "questions", action: "tagged" }
+    - if tag1.present?
+      .col=link_to tag1.name, { tag_name: tag1.name, controller: "questions", action: "tagged" }
+    - if tag2.present?
+      .col=link_to tag2.name, { tag_name: tag2.name, controller: "questions", action: "tagged" }
+    - if tag3.present?
+      .col=link_to tag3.name, { tag_name: tag3.name, controller: "questions", action: "tagged" }
+    - if tag4.present?
+      .col=link_to tag4.name, { tag_name: tag4.name, controller: "questions", action: "tagged" }
