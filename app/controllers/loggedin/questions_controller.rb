@@ -1,5 +1,5 @@
 class Loggedin::QuestionsController < Loggedin::ApplicationController
-  before_action :set_question, only: %i(edit destroy)
+  before_action :set_question, only: %i(edit update destroy)
   before_action :set_question_for_votes, only: %i(up_vote down_vote)
 
   def new
