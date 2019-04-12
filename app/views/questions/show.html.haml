@@ -3,7 +3,11 @@
 =render "shared/tag_list", tags: @question.tag_list
 
 .container.mt-2
-  .content=@question.content
+  .row
+    .voting.pr-15
+      =render 'vote', question: @question
+    .col
+      .content=@question.content
 
   - if current_user == @question.user
     = link_to '編集', edit_loggedin_question_path(@question)
@@ -16,10 +20,6 @@
   =render 'answers/answer_list', question: @question
 
   - if user_signed_in?
-    =  "👍 #{@question.get_upvotes.size} / 👎 #{@question.get_downvotes.size}"
-    = link_to "upvote", upvote_loggedin_question_path(@question), method: :put
-    = link_to "downvote", downvote_loggedin_question_path(@question), method: :put
-
     =render template: 'answers/new'
   %hr/
   = link_to '質問一覧', questions_path
