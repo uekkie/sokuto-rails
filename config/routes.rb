@@ -22,6 +22,6 @@ Rails.application.routes.draw do
         put "downvote", to: "questions#downvote"
       end
     end
+    resources :users, only: %i(edit update)
   end
-
 end
