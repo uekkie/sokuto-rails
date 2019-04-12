@@ -44,9 +44,10 @@ class Loggedin::QuestionsController < Loggedin::ApplicationController
   end
 
   private
-    def set_question
-      @question = current_user.questions.find(params[:id])
-    end
+
+  def set_question
+    @question = current_user.questions.find(params[:id])
+  end
 
   def set_question_for_votes
     @question = Question.find(params[:id])
