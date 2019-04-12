@@ -15,7 +15,7 @@ class Question < ApplicationRecord
   }
 
   scope :no_answers, -> {
-    where(answers_count: 0).order(created_at: :desc)
+    where(answers_count: 0).order(:created_at)
   }
 
   scope :with_tagged_questions, lambda {|tag_name|
