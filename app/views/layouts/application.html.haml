@@ -9,13 +9,14 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     = render 'layouts/header'
-    %h1 SparkHackers
-    - if alert
-      %p.alert.alert-danger= alert
-    - elsif notice
-      %p.alert.alert-success= notice
-    .row
-      .col-3
-        = render 'layouts/navigation'
-      .col-9
-        = yield
+    .container.mt-3
+      %h1 SOKUTO
+      - if alert
+        %p.alert.alert-danger= alert
+      - elsif notice
+        %p.alert.alert-success= notice
+      .row
+        .col-md-3
+          = render 'layouts/navigation'
+        .col-md-9
+          = yield
