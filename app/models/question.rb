@@ -18,7 +18,7 @@ class Question < ApplicationRecord
     where(answers_count: 0).order(created_at: :desc)
   }
 
-  scope :with_tagged_questions, lambda { |tag_name|
+  scope :with_tagged_questions, lambda {|tag_name|
     includes(:user).tagged_with(tag_name).order(created_at: :desc)
   }
 
@@ -27,13 +27,11 @@ class Question < ApplicationRecord
   end
 
   def humanize_created_at
-    elapsed_at = Time.now - created_at
+    seconds = (Time.now - created_at).round;
+    days = seconds / (60 * 60 * 24); return I18n.l(created_at, format: :short) if days > 0
+    hours = seconds / (60 * 60); return "#{hours}時間前" if hours > 0
+    minutes = seconds / 60; return "#{minutes}分前" if minutes > 0
 
-    return I18n.l(created_at, format: :within_hour) if elapsed_at < 1.hour
-    return I18n.l(created_at, format: :within_day) if elapsed_at < 1.day
-    return "昨日" if elapsed_at < 2.day
-    return "2日前" if elapsed_at < 3.day
-
-    I18n.l(created_at, format: :short)
+    return "#{seconds}秒前"
   end
 end
