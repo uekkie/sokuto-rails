@@ -6,16 +6,16 @@ class Question < ApplicationRecord
   belongs_to :user
   has_many :answers, dependent: :destroy
 
-  scope :recent_with_user, -> {
-    includes([:user, :taggings]).order(created_at: :desc)
+  scope :recent_with_user, -> (page){
+    includes([:user, :taggings]).order(created_at: :desc).page(page)
   }
 
-  scope :weighted_total, -> {
-    order(cached_weighted_total: :desc)
+  scope :weighted_total, -> (page) {
+    includes(:user).order(cached_weighted_total: :desc).page(page)
   }
 
-  scope :no_answers, -> {
-    where(answers_count: 0).order(:created_at)
+  scope :no_answers, -> (page){
+    includes(:user).where(answers_count: 0).order(:created_at).page(page)
   }
 
   scope :with_tagged_questions, lambda {|tag_name|

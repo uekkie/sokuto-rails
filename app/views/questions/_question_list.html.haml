@@ -19,3 +19,5 @@
           .published_at= "質問日時: #{question.humanize_created_at}"
           .user_stat= render "shared/user_stat", user: question.user
   %hr
+
+=paginate questions, param_name: 'page_recent'
