@@ -21,3 +21,4 @@
     .tab-pane.active{role:"tab_panel"}
       %p
         =render "question_list", questions: @questions
+  =paginate @questions
