@@ -6,20 +6,19 @@ class Question < ApplicationRecord
   belongs_to :user
   has_many :answers, dependent: :destroy
 
-  scope :recent_with_user, -> (page){
-    includes([:user, :taggings]).order(created_at: :desc).page(page)
-  }
-
-  scope :weighted_total, -> (page) {
-    includes(:user).order(cached_weighted_total: :desc).page(page)
-  }
-
-  scope :no_answers, -> (page){
-    includes(:user).where(answers_count: 0).order(:created_at).page(page)
-  }
-
   scope :with_tagged_questions, lambda {|tag_name|
     includes(:user).tagged_with(tag_name).order(created_at: :desc)
+  }
+
+  scope :sort_type_is, -> (type) {
+    case type
+    when 'no_answer'
+      where(answers_count: 0).order(:created_at)
+    when 'votes'
+      order(cached_votes_score: :desc)
+    else
+      order(created_at: :desc)
+    end
   }
 
   def truncated_content

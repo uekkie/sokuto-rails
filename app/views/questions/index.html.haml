@@ -11,21 +11,13 @@
 
   %ul.nav.nav-tabs{role:"tab_list"}
     %li.nav-item{role: "presentation"}
-      %a.nav-link{class: "#{is_active_actions('newer')}", aria:{controls:"tab_a", selected: true}, data:{toggle:"tab"}, href: "#tab_a", role: "tab"}
-        新着
+      = link_to '新着', questions_path(sort: 'newest'), class: "nav-link #{is_active_params('newest')}"
     %li.nav-item{role:"presentation"}
-      %a.nav-link{class: "#{is_active_actions('votes')}", aria:{controls:"tab_b"}, data:{toggle:"tab"}, href: "#tab_b", role: "tab"}
-        得票数
+      = link_to '得票数', questions_path(sort: 'votes'), class: "nav-link #{is_active_params('votes')}"
     %li.nav-item{role:"presentation"}
-      %a.nav-link{class: "#{is_active_actions('no_answer')}", aria:{controls:"tab_c"}, data:{toggle:"tab"}, href: "#tab_c", role: "tab"}
-        未回答
+      = link_to '未回答', questions_path(sort: 'no_answer'), class: "nav-link #{is_active_params('no_answer')}"
+
   .tab-content
-    .tab-pane#tab_a.active{role:"tab_panel"}
+    .tab-pane.active{role:"tab_panel"}
       %p
-        =render "question_list", questions: Question.recent_with_user(params[:page_recent])
-    .tab-pane#tab_b{role:"tab_panel"}
-      %p
-        =render "question_list", questions: Question.weighted_total(params[:page_votes])
-    .tab-pane#tab_c{role:"tab_panel"}
-      %p
-        =render "question_list", questions: Question.no_answers(params[:page_no_answer])
+        =render "question_list", questions: @questions

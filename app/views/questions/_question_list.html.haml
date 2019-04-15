@@ -20,4 +20,4 @@
           .user_stat= render "shared/user_stat", user: question.user
   %hr
 
-=paginate questions, param_name: 'page_recent'
+=paginate questions, params: {controller: 'questions'}
