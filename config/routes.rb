@@ -22,6 +22,8 @@ Rails.application.routes.draw do
         put "down_vote", to: "questions#down_vote"
       end
     end
-    resources :users, only: %i(edit update)
+    # 自分のプロフィールデータを更新するのであれば単数形でもよいのでは？
+    # モデル名と異なるが profile や mypage もわかりやすくてよいのでは？
+    resource :users, only: %i(edit update)
   end
 end

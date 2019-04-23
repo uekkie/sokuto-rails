@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2019_04_05_100512) do
 
   create_table "questions", force: :cascade do |t|
     t.string "title", null: false
-    t.text "content", default: ""
+    t.text "content", default: "" # この default の理由は？ null を不可にするなら null: false が欲しい
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -38,15 +38,15 @@ ActiveRecord::Schema.define(version: 2019_04_05_100512) do
     t.integer "cached_weighted_score", default: 0
     t.integer "cached_weighted_total", default: 0
     t.float "cached_weighted_average", default: 0.0
-    t.integer "answers_count", default: 0
+    t.integer "answers_count", default: 0 # 自分で追加したフィールド
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
-  create_table "taggings", id: :serial, force: :cascade do |t|
+  create_table "taggings", id: :serial, force: :cascade do |t| # Gem が自動で作ったテーブル：Gemの使い方を調べればわかる
     t.integer "tag_id"
-    t.string "taggable_type"
+    t.string "taggable_type" # Rails ポリモーフィック：各自で調べる
     t.integer "taggable_id"
-    t.string "tagger_type"
+    t.string "tagger_type" # Rails ポリモーフィック：各自で調べる
     t.integer "tagger_id"
     t.string "context", limit: 128
     t.datetime "created_at"
@@ -61,9 +61,9 @@ ActiveRecord::Schema.define(version: 2019_04_05_100512) do
     t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
   end
 
-  create_table "tags", id: :serial, force: :cascade do |t|
+  create_table "tags", id: :serial, force: :cascade do |t| # Gem が自動で作ったテーブル
     t.string "name"
-    t.integer "taggings_count", default: 0
+    t.integer "taggings_count", default: 0 # Gemが追加してくれるフィールド：タグの使われている回数（タグ外すと減る）
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2019_04_05_100512) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "votes", id: :serial, force: :cascade do |t|
+  create_table "votes", id: :serial, force: :cascade do |t| # Gemが生成してくれる
     t.string "votable_type"
     t.integer "votable_id"
     t.string "voter_type"

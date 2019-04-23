@@ -1,6 +1,12 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+# Rails 5.2.2.1 
+# https://weblog.rubyonrails.org/2019/3/13/Rails-4-2-5-1-5-1-6-2-have-been-released/
+# Ruby 2.5.4
+# https://www.ruby-lang.org/ja/news/2019/03/13/ruby-2-5-4-released/ 
+# 脆弱性対応なのであげたほうがいい
+# できるかぎりリリース前にあげるほうがいい
 ruby '2.5.3'
 
 gem 'rails', '~> 5.2.2'
@@ -8,7 +14,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'sassc-rails'
 gem 'uglifier', '>= 1.3.0'
-gem 'turbolinks', '~> 5'
+gem 'turbolinks', '~> 5' # たまにおかしくなることがあるので、利用するかどうかは要検討
 gem 'jbuilder', '~> 2.5'
 
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -25,7 +31,7 @@ gem 'activerecord-import'
 
 gem 'ransack'
 gem 'kaminari'
-gem 'faker'
+gem 'faker' # 普通はプロダクションにダミーデータはいれない
 gem 'initial_avatar'
 
 group :development, :test do
