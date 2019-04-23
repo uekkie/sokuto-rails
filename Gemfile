@@ -26,6 +26,7 @@ gem 'activerecord-import'
 gem 'ransack'
 gem 'kaminari'
 gem 'faker'
+gem 'initial_avatar'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

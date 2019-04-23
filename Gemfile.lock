@@ -108,6 +108,7 @@ GEM
       ruby_parser (~> 3.5)
     i18n (1.5.3)
       concurrent-ruby (~> 1.0)
+    initial_avatar (0.2.0)
     jbuilder (2.8.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -274,6 +275,7 @@ DEPENDENCIES
   devise
   faker
   haml-rails
+  initial_avatar
   jbuilder (~> 2.5)
   jquery-rails
   kaminari
