@@ -1,4 +1,6 @@
-%h1= @user.name
+%h1
+  = image_tag InitialAvatar.avatar_data_uri(@user.name.first), class: 'avatar-square'
+  = @user.name
 
 - if current_user == @user
   = link_to 'プロフィール編集', edit_loggedin_user_path(@user), class: 'btn btn-primary'

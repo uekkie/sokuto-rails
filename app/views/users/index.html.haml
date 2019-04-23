@@ -10,6 +10,8 @@
 %ul.list-group
   - @users.each do |user|
     %li.list-group-item
-      =link_to user.name, user
+      = link_to user_path(user) do
+        = image_tag InitialAvatar.avatar_data_uri(user.name.first), class: 'avatar'
+        = user.name
 
 = paginate @users
