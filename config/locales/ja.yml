@@ -3,3 +3,11 @@ ja:
     formats:
       short: "%-m月%-d日 %-H:%-M"
       short_slash: "%Y/%m/%d"
+  helpers:
+    label:
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認）
+        remember_me: パスワードを記憶
