@@ -8,14 +8,14 @@
     .col-5
       %h3 すべての質問
 %hr
-
-  %ul.nav.nav-tabs{role:"tab_list"}
-    %li.nav-item{role: "presentation"}
-      = link_to '新着', questions_path(sort: 'newest'), class: "nav-link #{is_active_params('newest')}"
-    %li.nav-item{role:"presentation"}
-      = link_to '得票数', questions_path(sort: 'votes'), class: "nav-link #{is_active_params('votes')}"
-    %li.nav-item{role:"presentation"}
-      = link_to '未回答', questions_path(sort: 'no_answer'), class: "nav-link #{is_active_params('no_answer')}"
+  = search_form_for @q do |f|
+    %ul.nav.nav-tabs{role:"tab_list"}
+      %li.nav-item{role: "presentation"}
+        = link_to '新着', questions_path(q:{s: 'created_at desc'}), class: "nav-link #{is_active_params('newest')}"
+      %li.nav-item{role:"presentation"}
+        = link_to '得票数', questions_path(q:{s: 'cached_votes_score desc'}), class: "nav-link #{is_active_params('votes')}"
+      %li.nav-item{role:"presentation"}
+        = link_to '未回答', questions_path(q:{answers_count: 0}), class: "nav-link #{is_active_params('no_answer')}"
 
   .tab-content
     .tab-pane.active{role:"tab_panel"}
