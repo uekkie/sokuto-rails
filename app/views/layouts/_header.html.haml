@@ -6,7 +6,7 @@
         = link_to 'ログアウト', destroy_user_session_path, class: 'nav-link', method: :delete
       %li.nab-item
         = link_to user_path(current_user), class: 'nav-link' do
-          = image_tag InitialAvatar.avatar_data_uri(current_user.name.first), class: 'avatar'
+          = avatar_image current_user, class: 'avatar'
           = current_user.name
     - else
       %li.nab-item
