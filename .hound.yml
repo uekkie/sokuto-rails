@@ -1,0 +1,7 @@
+Metrics/LineLength:
+  Max: 100
+Style/AsciiComments:
+  Enabled: false
+Style/ExtraSpacing:
+  Exclude:
+    - 'db/migrate/*.rb'
