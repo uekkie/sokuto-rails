@@ -2,8 +2,8 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: %i(show)
 
   def index
-    @sort_type = params[:sort] || 'newest'
-    @questions = Question.sort_type_is(@sort_type).page(params[:page]).includes(:user)
+    @q = Question.ransack(params[:q])
+    @questions = @q.result.page(params[:page]).includes(:user)
   end
 
   def show

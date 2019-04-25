@@ -28,3 +28,4 @@
       .col-sm-6.col-lg-3
         =link_to tag4.name, { tag_name: tag4.name, controller: "questions", action: "tagged" }, class: 'badge badge-dark m-1'
         = "× #{tag4.taggings_count}"
+= paginate @tags

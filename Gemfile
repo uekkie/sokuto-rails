@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.3'
+ruby '2.6.3'
 
-gem 'rails', '~> 5.2.2'
+gem 'rails', '~> 5.2.2.1'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'sassc-rails'
@@ -21,11 +21,9 @@ gem 'jquery-rails'
 gem 'rails-i18n', '~> 5.1'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'acts_as_votable'
-gem 'activerecord-import'
 
 gem 'ransack'
 gem 'kaminari'
-gem 'faker'
 gem 'initial_avatar'
 
 group :development, :test do
@@ -45,4 +43,6 @@ group :development do
   gem 'rails-erd'
   gem 'brakeman'
   gem 'bundler-audit'
+  gem 'faker'
+  gem 'activerecord-import'
 end
