@@ -18,8 +18,8 @@ Rails.application.routes.draw do
   namespace :loggedin do
     resources :questions, only: %i(new create edit update destroy) do
       member do
-        put "up_vote", to: "questions#up_vote"
-        put "down_vote", to: "questions#down_vote"
+        put "up_vote", to: "votes#up_vote"
+        put "down_vote", to: "votes#down_vote"
       end
     end
     resources :users, only: %i(edit update)
