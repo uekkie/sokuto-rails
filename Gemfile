@@ -15,7 +15,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 
 gem 'devise'
-gem 'haml-rails'
+gem 'hamlit-rails'
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'rails-i18n'

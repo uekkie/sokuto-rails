@@ -85,27 +85,21 @@ GEM
       responders
       warden (~> 1.2.3)
     erubi (1.8.0)
-    erubis (2.7.0)
     execjs (2.7.0)
     faker (1.9.3)
       i18n (>= 0.7)
     ffi (1.10.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    haml (5.0.4)
+    hamlit (2.9.3)
       temple (>= 0.8.0)
+      thor
       tilt
-    haml-rails (2.0.0)
-      actionpack (>= 5.1)
-      activesupport (>= 5.1)
-      haml (>= 4.0.6, < 6.0)
-      html2haml (>= 1.0.1)
-      railties (>= 5.1)
-    html2haml (2.2.0)
-      erubis (~> 2.7.0)
-      haml (>= 4.0, < 6)
-      nokogiri (>= 1.6.0)
-      ruby_parser (~> 3.5)
+    hamlit-rails (0.2.3)
+      actionpack (>= 4.0.1)
+      activesupport (>= 4.0.1)
+      hamlit (>= 1.2.0)
+      railties (>= 4.0.1)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     initial_avatar (0.2.0)
@@ -210,8 +204,6 @@ GEM
       railties (>= 4.2.0, < 6.0)
     ruby-graphviz (1.2.4)
     ruby_dep (1.5.0)
-    ruby_parser (3.13.1)
-      sexp_processor (~> 4.9)
     sassc (2.0.1)
       ffi (~> 1.9)
       rake
@@ -221,7 +213,6 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sexp_processor (4.12.0)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -274,7 +265,7 @@ DEPENDENCIES
   byebug
   devise
   faker
-  haml-rails
+  hamlit-rails
   initial_avatar
   jbuilder (~> 2.5)
   jquery-rails
