@@ -16,10 +16,10 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'devise'
 gem 'haml-rails'
-gem 'bootstrap', '4.3.1'
+gem 'bootstrap'
 gem 'jquery-rails'
-gem 'rails-i18n', '~> 5.1'
-gem 'acts-as-taggable-on', '~> 6.0'
+gem 'rails-i18n'
+gem 'acts-as-taggable-on'
 gem 'acts_as_votable'
 
 gem 'ransack'
