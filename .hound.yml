@@ -1,7 +1,17 @@
+# * 警告 80文字
+# * 禁止 100文字
+# のイメージ
 Metrics/LineLength:
   Max: 100
+  Exclude:
+    - "db/migrate/*.rb"
+# 日本語のコメントを許可する
 Style/AsciiComments:
   Enabled: false
+# 桁揃えが綺麗にならないことが多いので migration は除外
 Style/ExtraSpacing:
   Exclude:
     - 'db/migrate/*.rb'
+# ドキュメントの無い public class を許可する
+Style/Documentation:
+  Enabled: false
