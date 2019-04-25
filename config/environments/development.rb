@@ -61,7 +61,7 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   config.after_initialize do
-    Bullet.enable = true # Bulletを有効化
+    Bullet.enable = true
     Bullet.alert = true # JavaScriptのポップアップアラートを有効化
     Bullet.bullet_logger = true # Rails.root/log/bullet.logに出力
     Bullet.console = true # ブラウザのconsole.logに出力
