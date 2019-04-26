@@ -24,4 +24,8 @@ Rails.application.routes.draw do
     end
     resources :users, only: %i(edit update)
   end
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: '/lo'
+  end
 end
