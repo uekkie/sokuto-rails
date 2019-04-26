@@ -33,6 +33,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'bullet'
+  gem 'letter_opener_web'
 end
 
 group :development do
