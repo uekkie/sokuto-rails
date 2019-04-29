@@ -47,6 +47,7 @@ group :development do
   gem 'faker'
   gem 'activerecord-import'
   gem 'rspec-rails'
+  gem 'spring-commands-rspec'
 end
 
 group :test do
