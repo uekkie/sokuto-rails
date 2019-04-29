@@ -46,4 +46,11 @@ group :development do
   gem 'bundler-audit'
   gem 'faker'
   gem 'activerecord-import'
+  gem 'rspec-rails'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'webdrivers'
 end
