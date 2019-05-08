@@ -1,6 +1,5 @@
 class Loggedin::QuestionsController < Loggedin::ApplicationController
   before_action :set_question, only: %i(edit update destroy)
-  before_action :set_question_for_votes, only: %i(up_vote down_vote)
 
   def new
     @question = Question.new
@@ -33,27 +32,13 @@ class Loggedin::QuestionsController < Loggedin::ApplicationController
     redirect_to questions_url, notice: "質問「#{@question.title}」を削除しました"
   end
 
-  def up_vote
-    @question.upvote_by current_user
-    redirect_to question_url(@question)
-  end
-
-  def down_vote
-    @question.downvote_by current_user
-    redirect_to question_url(@question)
-  end
-
   private
 
   def set_question
     @question = current_user.questions.find(params[:id])
   end
 
-  def set_question_for_votes
-    @question = Question.find(params[:id])
+  def question_params
+    params.require(:question).permit(:title, :content, :tag_list)
   end
-
-    def question_params
-      params.require(:question).permit(:title, :content, :tag_list)
-    end
 end

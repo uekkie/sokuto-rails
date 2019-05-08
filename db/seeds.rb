@@ -3,10 +3,12 @@ users=[]
   name  = Faker::Name.name
   email = "user#{n+1}@test.com"
   password = "aaaaaa"
-  users << User.new(name:  name,
-               email: email,
-               password:              password,
-               password_confirmation: password)
+  user = User.new(name: name,
+                  email: email,
+                  password:              password,
+                  password_confirmation: password)
+  user.skip_confirmation!
+  users << user
 end
 
 User.import users

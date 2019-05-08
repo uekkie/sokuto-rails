@@ -15,16 +15,19 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 
 gem 'devise'
-gem 'haml-rails'
-gem 'bootstrap', '4.3.1'
+gem 'hamlit-rails'
+gem 'bootstrap'
 gem 'jquery-rails'
-gem 'rails-i18n', '~> 5.1'
-gem 'acts-as-taggable-on', '~> 6.0'
+gem 'rails-i18n'
+gem 'acts-as-taggable-on'
 gem 'acts_as_votable'
 
 gem 'ransack'
 gem 'kaminari'
 gem 'initial_avatar'
+
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -33,6 +36,10 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'bullet'
+  gem 'letter_opener_web'
+  gem 'rspec-rails'
+  gem 'spring-commands-rspec'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -45,4 +52,10 @@ group :development do
   gem 'bundler-audit'
   gem 'faker'
   gem 'activerecord-import'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'webdrivers'
 end
