@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Users", type: :system do
 
-  let!(:user) {create(:user)}
+  let!(:user) { create(:user) }
 
   scenario "ユーザーはログインができる" do
     visit root_path
