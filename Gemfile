@@ -26,6 +26,9 @@ gem 'ransack'
 gem 'kaminari'
 gem 'initial_avatar'
 
+gem 'devise-i18n'
+gem 'devise-i18n-views'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-rails'
@@ -34,6 +37,9 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'bullet'
   gem 'letter_opener_web'
+  gem 'rspec-rails'
+  gem 'spring-commands-rspec'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -46,13 +52,10 @@ group :development do
   gem 'bundler-audit'
   gem 'faker'
   gem 'activerecord-import'
-  gem 'rspec-rails'
-  gem 'spring-commands-rspec'
 end
 
 group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'webdrivers'
-  gem 'factory_bot_rails'
 end

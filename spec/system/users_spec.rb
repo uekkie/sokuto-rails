@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Users", type: :system do
 
-  given(:user) {create(:user)}
+  let!(:user) {create(:user)}
 
   scenario "ユーザーはログインができる" do
     visit root_path
@@ -11,11 +11,11 @@ RSpec.feature "Users", type: :system do
     expect(current_path).to eq(new_user_session_path)
 
     fill_in 'メールアドレス', with: user.email
-    fill_in 'パスワード', with: 'faild-pass'
+    fill_in 'パスワード', with: 'failed-pass'
 
     click_button 'ログイン'
 
-    expect(page).to have_content 'Email もしくはパスワードが不正です。'
+    expect(page).to have_content 'メールアドレス もしくはパスワードが不正です。'
 
     expect(current_path).to eq(new_user_session_path)
 

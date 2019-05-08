@@ -20,6 +20,6 @@ RSpec.configure do |config|
 
   config.filter_rails_from_backtrace!
 
-  Dir[Rails.root.join('spec/support/**/*.rb')].each {|f| require f}
+  Dir[Rails.root.join('spec/support/*.rb')].each {|f| require f}
   config.include RequestSpecHelper, type: :system
 end
