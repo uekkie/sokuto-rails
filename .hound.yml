@@ -1,3 +1,5 @@
+Bundler/OrderedGems:
+  Enabled: false
 # * 警告 80文字
 # * 禁止 100文字
 # のイメージ
@@ -19,3 +21,5 @@ Style/Documentation:
 Style/StringLiterals:
   Exclude:
     - "db/schema.rb"
+Style/FrozenStringLiteralComment:
+  Enabled: false
