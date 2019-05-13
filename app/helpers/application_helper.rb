@@ -3,7 +3,7 @@ module ApplicationHelper
     @sort_type == param_name ? "active" : ""
   end
 
-  def avatar_image(user, **class_name)
-    image_tag InitialAvatar.avatar_data_uri(user.name.first), class_name
+  def avatar_image(user, **options)
+    image_tag InitialAvatar.avatar_data_uri(user.name.first), options
   end
 end
