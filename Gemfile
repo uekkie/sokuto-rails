@@ -52,6 +52,7 @@ group :development do
   gem 'bundler-audit'
   gem 'faker'
   gem 'activerecord-import'
+  gem 'rubocop', '~> 0.69.0', require: false
 end
 
 group :test do
