@@ -1,11 +1,11 @@
 %h1=@question.title
 
-=render "shared/tag_list", tags: @question.tag_list
+= render "shared/tag_list", tags: @question.tag_list
 
 .container.mt-2
   .row
     .voting.pr-15
-      =render 'vote', question: @question
+      = render 'vote', question: @question
     .col
       .content=@question.content
 
@@ -17,10 +17,10 @@
          method: :delete, data: { confirm: 'よろしいですか？' }
     \|
   %hr
-  =render 'answers/answer_list', question: @question
+  = render 'answers/answer_list', question: @question
 
   - if user_signed_in?
-    =render template: 'answers/new'
+    = render template: 'answers/new'
   %hr
   = link_to '質問一覧', questions_path
 
