@@ -11,11 +11,11 @@
   = search_form_for @q do |f|
     %ul.nav.nav-tabs{role:"tab_list"}
       %li.nav-item{role: "presentation"}
-        = link_to '新着', questions_path(q:{s: 'created_at desc'}), class: "nav-link #{is_active_params('newest')}"
+        = link_to '新着', questions_path(q:{s: 'created_at desc'}), class: "nav-link"
       %li.nav-item{role:"presentation"}
-        = link_to '得票数', questions_path(q:{s: 'cached_votes_score desc'}), class: "nav-link #{is_active_params('votes')}"
+        = link_to '得票数', questions_path(q:{s: 'cached_votes_score desc'}), class: "nav-link"
       %li.nav-item{role:"presentation"}
-        = link_to '未回答', questions_path(q:{answers_count: 0}), class: "nav-link #{is_active_params('no_answer')}"
+        = link_to '未回答', questions_path(q:{answers_count: 0}), class: "nav-link"
 
   .tab-content
     .tab-pane.active{role:"tab_panel"}
