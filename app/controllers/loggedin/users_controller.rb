@@ -4,8 +4,12 @@ class Loggedin::UsersController < Loggedin::ApplicationController
   end
 
   def update
-    if current_user.update(user_params)
-      redirect_to user_url(current_user), notice: "更新しました"
+    # current_user を直接 update しない方がよい
+    # 現在、使用している current_user の情報が抜けて、予期せぬエラーを引き起こす
+    # なので、別途 user モデルを再取得した方がいい
+    @user = User.find(current_user.id)
+    if @user.update(user_params)
+      redirect_to user_url(@user), notice: "更新しました"
     else
       render :edit
     end

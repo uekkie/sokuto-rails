@@ -8,6 +8,7 @@
     - if @q.conditions.present?
       = link_to '解除', tags_path, class: 'btn btn-danger mt-1'
 
+-# tag1 - 4 は配列にしてループ処理できるはず
 - @tags.each_slice(4) do |tag1, tag2, tag3, tag4|
   .row
     - if tag1.present?

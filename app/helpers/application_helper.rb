@@ -1,5 +1,7 @@
 module ApplicationHelper
   def is_active_params(param_name)
+    # ransack のクエリにパラメータを移したのでアクティブなタブの判定ができなくなっている
+    # 処理方法、検討中
     @sort_type == param_name ? "active" : ""
   end
 

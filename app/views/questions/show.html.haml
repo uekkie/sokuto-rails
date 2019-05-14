@@ -1,26 +1,29 @@
-%h1=@question.title
+%h1= @question.title
 
-=render "shared/tag_list", tags: @question.tag_list
+= render "shared/tag_list", tags: @question.tag_list
 
 .container.mt-2
   .row
+    -# pr-15: pr-5 までしかないはず。padding より margin がよいのでは？
     .voting.pr-15
-      =render 'vote', question: @question
+      = render 'vote', question: @question
     .col
-      .content=@question.content
+      .content= @question.content
 
   - if current_user == @question.user
     = link_to '編集', edit_loggedin_question_path(@question)
     \|
     = link_to '削除',
-         loggedin_question_path(@question),
-         method: :delete, data: { confirm: 'よろしいですか？' }
+      loggedin_question_path(@question),
+      method: :delete, data: { confirm: 'よろしいですか？' }
     \|
   %hr/
-  =render 'answers/answer_list', question: @question
+  = render 'answers/answer_list', question: @question
+  -# = render question.answers
+  -# => answers/_answer.html.haml
+  -# rails の記法があるので調べてみましょう
 
   - if user_signed_in?
-    =render template: 'answers/new'
+    = render template: 'answers/new'
   %hr/
   = link_to '質問一覧', questions_path
-

@@ -1,5 +1,6 @@
 - provide :submit_label, "更新する"
 
+-# user パラメータは不要
 = render 'form', user: current_user, question: @question
 
 = link_to 'キャンセル', question_path(@question)

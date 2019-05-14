@@ -6,7 +6,7 @@ class Loggedin::QuestionsController < Loggedin::ApplicationController
   end
 
   def edit
-    @user = current_user
+    @user = current_user # 不要ではないか？
   end
 
   def create
@@ -28,7 +28,9 @@ class Loggedin::QuestionsController < Loggedin::ApplicationController
   end
 
   def destroy
-    @question.destroy
+    # https://qiita.com/jnchito/items/3393c5c1a744199e128a
+    # ! あったほうが良さそう
+    @question.destroy!
     redirect_to questions_url, notice: "質問「#{@question.title}」を削除しました"
   end
 

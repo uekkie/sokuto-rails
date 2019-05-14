@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     collection do
       get 'tagged/:tag_name', to: 'questions#tagged'
     end
-    resources :answers, only: %i(new create)
+    resources :answers, only: %i(create) # new 不要
   end
 
   resources :tags, only: %i(index)
