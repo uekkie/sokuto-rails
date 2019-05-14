@@ -16,11 +16,11 @@
          loggedin_question_path(@question),
          method: :delete, data: { confirm: 'よろしいですか？' }
     \|
-  %hr/
+  %hr
   =render 'answers/answer_list', question: @question
 
   - if user_signed_in?
     =render template: 'answers/new'
-  %hr/
+  %hr
   = link_to '質問一覧', questions_path
 
