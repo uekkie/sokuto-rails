@@ -4,8 +4,9 @@ class Loggedin::UsersController < Loggedin::ApplicationController
   end
 
   def update
-    if current_user.update(user_params)
-      redirect_to user_url(current_user), notice: "更新しました"
+    @user = User.find(current_user.id)
+    if @user.update(user_params)
+      redirect_to user_url(@user), notice: "更新しました"
     else
       render :edit
     end
