@@ -8,6 +8,7 @@ class Loggedin::AnswersController < ApplicationController
     if @answer.save
       redirect_to question_url(@question), notice: '回答を投稿しました'
     else
+      # TODO: answersを適切にセットしなおす必要あり
       render 'questions/show'
     end
   end
