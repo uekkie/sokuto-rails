@@ -11,7 +11,7 @@
     .body= question.truncated_content
     .row
       .col-5
-        .tags= render "shared/tag_list", tags: question.tag_list
+        .tags= render question.tags
       .col-5
         .published_at
           質問日時:

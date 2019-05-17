@@ -20,5 +20,5 @@
   .tab-content
     .tab-pane.active{role:"tab_panel"}
       %p
-        = render @questions.includes(:taggings)
+        = render @questions
   = paginate @questions

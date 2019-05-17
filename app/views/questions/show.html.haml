@@ -1,6 +1,6 @@
 %h1=@question.title
 
-= render "shared/tag_list", tags: @question.tag_list
+= render @question.tags
 
 .container.mt-2
   .row
