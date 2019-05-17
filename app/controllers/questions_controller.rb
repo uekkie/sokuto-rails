@@ -11,10 +11,6 @@ class QuestionsController < ApplicationController
     @answers = @question.answers.order(:created_at).includes(:user)
   end
 
-  def tagged
-    @tag_name = params[:tag_name]
-  end
-
   private
 
   def set_question

@@ -12,6 +12,6 @@
   .row
     - sliced_tags.each do |tag|
       .col-sm-6.col-lg-3
-        = link_to tag.name, { tag_name: tag.name, controller: "questions", action: "tagged" }, class: 'badge badge-dark m-1'
+        = link_to tag.name, tag_path(tag), class: 'badge badge-dark m-1'
         = "× #{tag.taggings_count}"
 = paginate @tags

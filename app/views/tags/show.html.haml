@@ -1,7 +1,7 @@
 .row
   .col-5
-    = "[#{@tag_name}] タグが付いた質問"
+    = "[#{@tag.name}] タグが付いた質問"
   - if user_signed_in?
     .col-2
       = link_to "質問する", new_loggedin_question_path, class: "btn btn-primary"
-= render Question.with_tagged_questions(@tag_name)
+= render @tagged_questions

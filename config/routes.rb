@@ -4,13 +4,9 @@ Rails.application.routes.draw do
       registrations: 'users/registrations'
   }
 
-  resources :questions, only: %i(index show) do
-    collection do
-      get 'tagged/:tag_name', to: 'questions#tagged'
-    end
-  end
+  resources :questions, only: %i(index show)
 
-  resources :tags, only: %i(index)
+  resources :tags, only: %i(index show)
 
   resources :users, only: %i(index show)
 
