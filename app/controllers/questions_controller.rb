@@ -8,6 +8,7 @@ class QuestionsController < ApplicationController
 
   def show
     @answer = @question.answers.build
+    @answers = @question.answers.order(:created_at).includes(:user)
   end
 
   def tagged

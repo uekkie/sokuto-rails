@@ -17,7 +17,9 @@
          method: :delete, data: { confirm: 'よろしいですか？' }
     \|
   %hr
-  = render 'answers/answer_list', question: @question
+    %ul.list-group
+      = render @answers
+%br
 
   - if user_signed_in?
     = render template: 'loggedin/answers/new'
