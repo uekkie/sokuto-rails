@@ -8,7 +8,6 @@ Rails.application.routes.draw do
     collection do
       get 'tagged/:tag_name', to: 'questions#tagged'
     end
-    resources :answers, only: %i(create)
   end
 
   resources :tags, only: %i(index)
@@ -21,6 +20,7 @@ Rails.application.routes.draw do
         put "up_vote", to: "votes#up_vote"
         put "down_vote", to: "votes#down_vote"
       end
+      resources :answers, only: %i(create)
     end
     resources :users, only: %i(edit update)
   end

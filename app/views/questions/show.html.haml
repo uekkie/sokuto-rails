@@ -20,7 +20,7 @@
   = render 'answers/answer_list', question: @question
 
   - if user_signed_in?
-    = render template: 'answers/new'
+    = render template: 'loggedin/answers/new'
   %hr
   = link_to '質問一覧', questions_path
 
