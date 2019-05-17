@@ -16,7 +16,7 @@
         .published_at
           質問日時:
           - if question.created_at > 1.days.ago
-            = "#{time_ago_in_words(question.created_at, include_seconds: true)}前"
+            #{time_ago_in_words(question.created_at, include_seconds: true)}前
           - else
             = I18n.l(question.created_at, format: :short)
         .user_stat= render "shared/user_stat", user: question.user

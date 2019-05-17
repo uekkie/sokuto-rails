@@ -1,11 +1,11 @@
 -# TODO: 新規、名前、人気の一覧ができる
-= search_form_for @q, url: tags_path do |f|
+= search_form_for @query, url: tags_path do |f|
   .field
     = f.label :name_cont, 'タグ名'
     = f.search_field :name_cont, class: 'form-control'
   .actions
     = f.submit '絞り込む', class: 'btn btn-primary mt-1'
-    - if @q.conditions.present?
+    - if @query.conditions.present?
       = link_to '解除', tags_path, class: 'btn btn-danger mt-1'
 
 - @tags.each_slice(4) do |sliced_tags|

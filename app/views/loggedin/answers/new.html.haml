@@ -3,7 +3,7 @@
     #error_explanation.alert.alert-danger
       %ul
         - @answer.errors.full_messages.each do |message|
-          %li #{message}
+          %li= message
 
   .field
     = f.text_area :content, id: :answer_body, placeholder: "回答", class: 'form-control'

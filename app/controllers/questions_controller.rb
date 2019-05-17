@@ -1,9 +1,9 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: %i(show)
+  before_action :set_question, only: %i[show]
 
   def index
-    @q = Question.ransack(params[:q])
-    @questions = @q.result.page(params[:page]).includes([:user, :tags])
+    @query = Question.ransack(params[:q])
+    @questions = @query.result.page(params[:page]).includes(%i[user tags])
   end
 
   def show
