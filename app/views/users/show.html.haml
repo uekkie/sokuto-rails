@@ -3,7 +3,7 @@
   = @user.name
 
 - if current_user == @user
-  = link_to 'プロフィール編集', edit_loggedin_user_path(@user), class: 'btn btn-primary'
+  = link_to 'プロフィール編集', edit_user_registration_path, class: 'btn btn-primary'
 = @user.email
 
 = render "questions/question_list", questions: @user.questions
