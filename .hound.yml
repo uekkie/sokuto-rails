@@ -33,3 +33,5 @@ Style/SymbolArray:
 Layout/EmptyLines:
   Exclude:
     - "db/migrate/*.rb"
+Style/AsciiComments:
+  Enabled: false
