@@ -6,4 +6,4 @@
   = link_to 'プロフィール編集', edit_user_registration_path, class: 'btn btn-primary'
 = @user.email
 
-= render "questions/question_list", questions: @user.questions
+= render @user.questions
