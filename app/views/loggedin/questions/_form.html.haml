@@ -7,7 +7,7 @@
   .field
     = f.text_field :title, placeholder: "質問のタイトル", class: 'form-control'
   .field.mt-1
-    = text_field_tag 'question[tag_list]', question.tag_list.join(","), placeholder: "タグ（カンマで区切ります）", class: 'form-control'
+    = f.text_field :tag_list, value: question.tag_list.join(","), placeholder: "タグ（カンマで区切ります）", class: 'form-control'
   .field
     = f.text_area :content, placeholder: "質問の内容", class: 'form-control'
 
