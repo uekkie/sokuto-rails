@@ -1,0 +1,8 @@
+.card.text-center
+  .card-header
+    = link_to "👍", up_vote_loggedin_question_path(question), method: :put
+  %h3.card-body
+    = question.cached_weighted_score
+  .card-footer
+    = link_to "👎", down_vote_loggedin_question_path(question), method: :put
+

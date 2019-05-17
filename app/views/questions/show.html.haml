@@ -1,0 +1,28 @@
+%h1=@question.title
+
+= render @question.tags
+
+.container.mt-2
+  .row
+    .voting.pr-5
+      = render 'questions/vote', question: @question
+    .col
+      .content=@question.content
+
+  - if current_user == @question.user
+    = link_to '編集', edit_loggedin_question_path(@question)
+    \|
+    = link_to '削除',
+         loggedin_question_path(@question),
+         method: :delete, data: { confirm: 'よろしいですか？' }
+    \|
+  %hr
+    %ul.list-group
+      = render @answers
+%br
+
+  - if user_signed_in?
+    = render template: 'loggedin/answers/new'
+  %hr
+  = link_to '質問一覧', questions_path
+

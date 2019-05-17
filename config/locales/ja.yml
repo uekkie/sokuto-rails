@@ -1,0 +1,34 @@
+ja:
+  time:
+    formats:
+      short: "%-m月%-d日 %-H:%-M"
+      short_slash: "%Y/%m/%d"
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "バリデーションに失敗しました: %{errors}"
+        restrict_dependent_destroy:
+          has_one: "%{record}が存在しているので削除できません"
+          has_many: "%{record}が存在しているので削除できません"
+    models:
+      question: 質問
+      answer: 回答
+    attributes:
+      question:
+        id: ID
+        title: タイトル
+        content: 質問の内容
+        created_at: 登録日時
+        updated_at: 更新日時
+      answer:
+        content: 回答
+        created_at: 登録日時
+        updated_at: 更新日時
+  helpers:
+    label:
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認）
+        remember_me: パスワードを記憶

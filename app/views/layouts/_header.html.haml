@@ -1,0 +1,13 @@
+.app-title.navbar.navbar-expand-md.navbar-light.bg-light
+  .navbar-brand Spark Hackers
+  %ul.navbar-nav.ml-auto
+    - if user_signed_in?
+      %li.nab-item
+        = link_to 'ログアウト', destroy_user_session_path, class: 'nav-link', method: :delete
+      %li.nab-item
+        = link_to user_path(current_user), class: 'nav-link' do
+          = avatar_image current_user, class: 'avatar'
+          = current_user.name
+    - else
+      %li.nab-item
+        = link_to 'ログイン', new_user_session_path, class: 'nav-link'

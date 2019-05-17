@@ -22,12 +22,15 @@ module SokutoRails
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration can go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded after loading
-    # the framework and any gems in your application.
+    config.time_zone = 'Tokyo'
+    config.i18n.default_locale = :ja
 
-    # Don't generate system test files.
-    config.generators.system_tests = nil
+    config.generators do |g|
+      g.factory_bot false
+      g.factory_bot dir: 'spec/factories'
+      g.system_tests = nil
+    end
+
+    ActsAsTaggableOn.remove_unused_tags = true
   end
 end

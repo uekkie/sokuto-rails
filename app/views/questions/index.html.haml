@@ -1,0 +1,24 @@
+.row
+  - if user_signed_in?
+    .col-5
+      %h3 質問
+    .col-2
+      = link_to "質問する", new_loggedin_question_path, class: "btn btn-primary"
+  - else
+    .col-5
+      %h3 すべての質問
+%hr
+  = search_form_for @query do |f|
+    %ul.nav.nav-tabs{role:"tab_list"}
+      %li.nav-item{role: "presentation"}
+        = link_to '新着', questions_path(q:{s: 'created_at desc'}), class: "nav-link"
+      %li.nav-item{role:"presentation"}
+        = link_to '得票数', questions_path(q:{s: 'cached_votes_score desc'}), class: "nav-link"
+      %li.nav-item{role:"presentation"}
+        = link_to '未回答', questions_path(q:{answers_count: 0}), class: "nav-link"
+
+  .tab-content
+    .tab-pane.active{role:"tab_panel"}
+      %p
+        = render @questions
+  = paginate @questions
