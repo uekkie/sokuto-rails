@@ -27,7 +27,7 @@ class Loggedin::QuestionsController < Loggedin::ApplicationController
   end
 
   def destroy
-    @question.destroy
+    @question.destroy!
     redirect_to questions_url, notice: "質問「#{@question.title}」を削除しました"
   end
 
