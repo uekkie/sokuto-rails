@@ -1,5 +1,4 @@
-class Loggedin
-  ::AnswersController < ApplicationController
+class Loggedin::AnswersController < ApplicationController
   before_action :set_question, only: %i(create)
 
   def create
@@ -9,7 +8,7 @@ class Loggedin
     if @answer.save
       redirect_to question_url(@question), notice: '回答を投稿しました'
     else
-      render :new
+      render 'questions/show'
     end
   end
 
