@@ -1,0 +1,6 @@
+%li.list-group-item
+  - user = answer.user
+  = link_to user.name, user_path(user)
+  = l answer.created_at, format: :short
+  %br
+  = answer.content

@@ -4,14 +4,9 @@ Rails.application.routes.draw do
       registrations: 'users/registrations'
   }
 
-  resources :questions, only: %i(index show) do
-    collection do
-      get 'tagged/:tag_name', to: 'questions#tagged'
-    end
-    resources :answers, only: %i(new create)
-  end
+  resources :questions, only: %i(index show)
 
-  resources :tags, only: %i(index)
+  resources :tags, only: %i(index show)
 
   resources :users, only: %i(index show)
 
@@ -21,6 +16,7 @@ Rails.application.routes.draw do
         put "up_vote", to: "votes#up_vote"
         put "down_vote", to: "votes#down_vote"
       end
+      resources :answers, only: %i(create)
     end
     resources :users, only: %i(edit update)
   end
