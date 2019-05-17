@@ -16,10 +16,6 @@ class QuestionsController < ApplicationController
 
   private
 
-  def question_params
-    params.require(:question).permit(:title, :content, :tag_list)
-  end
-
   def set_question
     @question = Question.find(params[:id])
   end
