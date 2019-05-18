@@ -18,7 +18,7 @@
     \|
   %hr
     %ul.list-group
-      = render @answers
+      = render partial: 'answers/answer', collection: @question.persisted_answers
 %br
 
   - if user_signed_in?

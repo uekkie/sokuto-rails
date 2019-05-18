@@ -14,4 +14,8 @@ class Question < ApplicationRecord
   def truncated_content
     content.truncate(40)
   end
+
+  def persisted_answers
+    answers.where.not(id: nil).includes(:user).order(:created_at)
+  end
 end

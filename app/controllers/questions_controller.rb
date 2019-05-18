@@ -7,8 +7,8 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    # @answers = @question.answers.where.not(id: nil).order(:created_at).includes(:user)
     @answer = @question.answers.build
-    @answers = @question.answers.order(:created_at).includes(:user)
   end
 
   private
