@@ -2,7 +2,7 @@ class Loggedin::AnswersController < ApplicationController
   before_action :set_question, only: %i(create)
 
   def create
-    @answer = @question.answers.build(answer_params) {|answer|
+    @answer = @question.answers.build(answer_params) { |answer|
       answer.user = current_user
     }
 
@@ -13,7 +13,8 @@ class Loggedin::AnswersController < ApplicationController
     end
   end
 
-private
+  private
+
   def set_question
     @question = Question.find(params[:question_id])
   end
