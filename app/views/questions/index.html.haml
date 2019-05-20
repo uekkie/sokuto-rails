@@ -8,6 +8,7 @@
     .col-5
       %h3 すべての質問
 %hr
+  -#TODO: クエリをコントローラに移す
   = search_form_for @query do |f|
     %ul.nav.nav-tabs{role:"tab_list"}
       %li.nav-item{role: "presentation"}
