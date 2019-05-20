@@ -11,7 +11,7 @@ class Question < ApplicationRecord
     includes(:user).tagged_with(tag_name).order(created_at: :desc)
   }
 
-  scope :query_with, -> (type) {
+  scope :query_with, ->(type) {
     case type
     when 'no_answer'
       where(answers_count: 0).order(:created_at)
