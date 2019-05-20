@@ -2,9 +2,9 @@ class Loggedin::AnswersController < ApplicationController
   before_action :set_question, only: %i(create)
 
   def create
-    @answer = @question.answers.build(answer_params) { |answer|
+    @answer = @question.answers.build(answer_params) do |answer|
       answer.user = current_user
-    }
+    end
 
     if @answer.save
       redirect_to question_url(@question), notice: '回答を投稿しました'
