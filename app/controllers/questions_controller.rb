@@ -2,7 +2,6 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: %i[show]
 
   def index
-
     @query_type = params[:query] || 'newest'
     @questions  = Question.query_with(@query_type)
                       .page(params[:page])
