@@ -25,9 +25,7 @@ Style/Documentation:
   Enabled: false
 # シングルクォート強制除外ファイル
 Style/StringLiterals:
-  Exclude:
-    - "db/schema.rb"
-    - "db/migrate/*.rb"
+  Enabled: false
 Style/FrozenStringLiteralComment:
   Enabled: false
 Style/SymbolArray:
