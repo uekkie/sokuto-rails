@@ -27,8 +27,10 @@ ja:
   helpers:
     label:
       user:
-        name: 名前
+        name: 表示名
         email: メールアドレス
+        introduce: 自己紹介
+        live_in: 場所
         password: パスワード
         password_confirmation: パスワード（確認）
         remember_me: パスワードを記憶

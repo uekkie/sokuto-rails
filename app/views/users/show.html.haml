@@ -1,9 +1,19 @@
-%h1
-  = avatar_image @user, class: 'avatar-square'
-  = @user.name
+%ul.nav.nav-tabs{ role:"tab_list" }
+  %li.nav-item{ role: "presentation" }
+    = link_to 'プロフィール', user_path(@user), class: "nav-link active"
 
-- if current_user == @user
-  = link_to 'プロフィール編集', edit_user_registration_path, class: 'btn btn-primary'
-= @user.email
+  - if current_user == @user
+    %li.nav-item{ role:"presentation" }
+      = link_to 'プロフィールを編集', edit_user_registration_path, class: "nav-link"
 
-= render @user.questions
+.tab-content
+  .tab-pane.active{ role:"tab_panel" }
+    .row.mt-3
+      .col-3
+        = avatar_image @user, class: 'avatar-profile'
+      .col-9
+        %h3= @user.name
+        .introduce= @user.introduce
+        .live_in= @user.live_in
+        = render @user.questions.includes(%i(tags tag_taggings))
+
