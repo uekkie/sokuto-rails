@@ -4,7 +4,7 @@ RSpec.feature "Users", type: :system do
 
   let!(:user) { create(:user) }
 
-  scenario "ユーザーはログインができる" do
+  scenario "ログインに失敗すること" do
     visit root_path
     click_link 'ログイン'
 
@@ -15,9 +15,13 @@ RSpec.feature "Users", type: :system do
 
     click_button 'ログイン'
 
-    expect(page).to have_content 'メールアドレス もしくはパスワードが不正です。'
-
+    expect(page).to have_content 'メールアドレスまたはパスワードが違います'
     expect(current_path).to eq(new_user_session_path)
+  end
+
+  scenario "ユーザーはログインができる" do
+    visit root_path
+    click_link 'ログイン'
 
     fill_in 'メールアドレス', with: user.email
     fill_in 'パスワード', with: user.password
