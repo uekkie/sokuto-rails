@@ -2,16 +2,16 @@
 %h2
   アカウント情報更新
 
-%ul.nav.nav-tabs{ role:"tab_list" }
+%ul.nav.nav-tabs{ role: "tab_list" }
   %li.nav-item{ role: "presentation" }
     = link_to 'プロフィール', user_path(@user), class: "nav-link"
 
-  %li.nav-item{ role:"presentation" }
+  %li.nav-item{ role: "presentation" }
     = link_to 'プロフィールを編集', edit_user_registration_path, class: "nav-link active"
 
   .tab-content
-    .tab-pane.active{ role:"tab_panel" }
-      = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, role:"form" }) do |f|
+    .tab-pane.active{ role: "tab_panel" }
+      = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, role: "form" }) do |f|
         = devise_error_messages!
         .form-group
           = f.label :name

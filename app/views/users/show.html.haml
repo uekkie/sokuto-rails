@@ -1,13 +1,13 @@
-%ul.nav.nav-tabs{ role:"tab_list" }
+%ul.nav.nav-tabs{ role: "tab_list" }
   %li.nav-item{ role: "presentation" }
     = link_to 'プロフィール', user_path(@user), class: "nav-link active"
 
   - if current_user == @user
-    %li.nav-item{ role:"presentation" }
+    %li.nav-item{ role: "presentation" }
       = link_to 'プロフィールを編集', edit_user_registration_path, class: "nav-link"
 
 .tab-content
-  .tab-pane.active{ role:"tab_panel" }
+  .tab-pane.active{ role: "tab_panel" }
     .row.mt-3
       .col-3
         = avatar_image @user, class: 'avatar-profile'
