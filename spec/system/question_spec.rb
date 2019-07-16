@@ -18,9 +18,9 @@ RSpec.feature "Questions", type: :system do
       click_on '投稿する'
 
       expect(page).to have_content '質問「プログラマーにとって大切なことはなんですか」を作成しました'
-      expect(page).to have_selector "[data-test='question_title']", text: 'プログラマーにとって大切なことはなんですか'
-      expect(page).to have_selector '.tags', text: '職業 プログラマー 考え方'
-      expect(page).to have_selector '.content', text: 'プロのプログラマーを続けていく上で、あなたが大切にしている考えや、心がけていることなどあれば教えてください。'
+      expect(page).to have_content 'プログラマーにとって大切なことはなんですか'
+      expect(page).to have_content '職業 プログラマー 考え方'
+      expect(page).to have_content 'プロのプログラマーを続けていく上で、あなたが大切にしている考えや、心がけていることなどあれば教えてください。'
     end
   end
 end
