@@ -24,6 +24,16 @@ ja:
         content: 回答
         created_at: 登録日時
         updated_at: 更新日時
+  simple_form:
+    labels:
+      user:
+        name: 表示名
+        email: メールアドレス
+        introduce: 自己紹介
+        live_in: 場所
+        password: パスワード
+        password_confirmation: パスワード（確認）
+        remember_me: パスワードを記憶
   helpers:
     label:
       user:
