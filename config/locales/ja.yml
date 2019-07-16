@@ -18,6 +18,7 @@ ja:
         id: ID
         title: タイトル
         content: 質問の内容
+        tag_list: タグ（カンマで区切ります）
         created_at: 登録日時
         updated_at: 更新日時
       answer:
