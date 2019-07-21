@@ -8,27 +8,19 @@
   .tab-pane.active{ role: "tab_panel" }
     = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, role: "form" }) do |f|
       = devise_error_messages!
-      .form-group
-        = f.input :name, :autofocus => true, input_html: { class: "form-control" }
-      .form-group
-        = f.input :introduce, input_html: { class: "form-control" }
-      .form-group
-        = f.input :live_in, input_html: { class: "form-control" }
-      .form-group
-        = f.input :email, input_html: { class: "form-control" }
+      = f.input :name, :autofocus => true
+      = f.input :introduce
+      = f.input :live_in
+      = f.input :email
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-        .form-control
-          メールアドレスの確認を待っています: #{resource.unconfirmed_email}
-      .form-group
-        %i (パスワードを変更しない場合は空欄のままにしてください)
-        = f.input :password, :autocomplete => "off", input_html: { class: "form-control" }
-      .form-group
-        = f.input :password_confirmation, input_html: { class: "form-control" }
-      .form-group
-        %i (更新するために現在のパスワードが必要です。)
-        = f.input :current_password, input_html: { class: "form-control" }
-      .form-group
-        = f.submit "更新", class: "btn btn-primary"
+        メールアドレスの確認を待っています: #{resource.unconfirmed_email}
+      %i (パスワードを変更しない場合は空欄のままにしてください)
+      = f.input :password, :autocomplete => "off"
+      = f.input :password_confirmation
+      %i (更新するために現在のパスワードが必要です。)
+      = f.input :current_password
+      = f.submit "更新", class: "btn btn-primary"
+%hr
 %h3 退会
 %p
   退会してユーザー情報を削除しますか？ #{button_to "退会する", registration_path(resource_name), :data => { :confirm => "よろしいですか？" }, :method => :delete, class: "btn btn-danger"}
