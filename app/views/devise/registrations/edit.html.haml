@@ -6,16 +6,16 @@
 
 .tab-content
   .tab-pane.active{ role: "tab_panel" }
-    = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, role: "form" }) do |f|
+    = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, role: "form" }) do |f|
       = devise_error_messages!
-      = f.input :name, :autofocus => true
+      = f.input :name, autofocus: true
       = f.input :introduce
       = f.input :live_in
       = f.input :email
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
         メールアドレスの確認を待っています: #{resource.unconfirmed_email}
       %i (パスワードを変更しない場合は空欄のままにしてください)
-      = f.input :password, :autocomplete => "off"
+      = f.input :password, autocomplete: "off"
       = f.input :password_confirmation
       %i (更新するために現在のパスワードが必要です。)
       = f.input :current_password
@@ -23,5 +23,5 @@
 %hr
 %h3 退会
 %p
-  退会してユーザー情報を削除しますか？ #{button_to "退会する", registration_path(resource_name), :data => { :confirm => "よろしいですか？" }, :method => :delete, class: "btn btn-danger"}
+  退会してユーザー情報を削除しますか？ #{button_to "退会する", registration_path(resource_name), data: { confirm: "よろしいですか？" }, method: :delete, class: "btn btn-danger"}
 = link_to "戻る", :back
