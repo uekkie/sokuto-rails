@@ -8,16 +8,16 @@
     .col-5
       %h3 すべての質問
 %hr
-  %ul.nav.nav-tabs{ role:"tab_list" }
+  %ul.nav.nav-tabs{ role: "tab_list" }
     %li.nav-item{ role: "presentation" }
       = link_to '新着', questions_path(query: 'newest'), class: "nav-link #{active('newest')}"
-    %li.nav-item{ role:"presentation" }
+    %li.nav-item{ role: "presentation" }
       = link_to '得票数', questions_path(query: 'votes'), class: "nav-link #{active('votes')}"
-    %li.nav-item{ role:"presentation" }
+    %li.nav-item{ role: "presentation" }
       = link_to '未回答', questions_path(query: 'no_answer'), class: "nav-link #{active('no_answer')}"
 
   .tab-content
-    .tab-pane.active{ role:"tab_panel" }
+    .tab-pane.active{ role: "tab_panel" }
       %p
         = render @questions
   = paginate @questions
