@@ -3,4 +3,11 @@
 
 https://spark-hackers.herokuapp.com/
 
-[ER図](erd.pdf)
+
+## ER図
+![er](erd.png)
+
+ER図の更新コマンド
+```
+$ bundle exec erd --filetype=png
+```
