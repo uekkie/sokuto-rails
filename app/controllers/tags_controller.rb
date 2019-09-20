@@ -1,6 +1,7 @@
 class TagsController < ApplicationController
   def index
-    @query = Tag.ransack(params[:q])
+    @sort_type = params[:sort] || 'popular'
+    @query = Tag.query_with(@sort_type).ransack(params[:q])
     @tags = @query.result.page(params[:page])
   end
 
