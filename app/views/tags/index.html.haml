@@ -7,6 +7,14 @@
     = f.submit '絞り込む', class: 'btn btn-primary mt-1'
     - if @query.conditions.present?
       = link_to '解除', tags_path, class: 'btn btn-danger mt-1'
+  .orders-btn-group
+    %ul.nav.nav-tabs{ role: "tab_list" }
+      %li.nav-item{ role: "presentation" }
+        = link_to '人気', tags_path(sort: 'popular'), class: "nav-link #{active('popular')}"
+      %li.nav-item{ role: "presentation" }
+        = link_to '名前', tags_path(sort: 'name'), class: "nav-link #{active('name')}"
+      %li.nav-item{ role: "presentation" }
+        = link_to '新規', tags_path(sort: 'new'), class: "nav-link #{active('new')}"
 
 - @tags.each_slice(4) do |sliced_tags|
   .row

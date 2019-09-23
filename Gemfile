@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.4'
 
-gem 'rails', '~> 6.0.0'
+gem 'rails', '~> 5.2.3'
 
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma'
@@ -18,7 +18,7 @@ gem 'hamlit-rails'
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'rails-i18n'
-gem 'acts-as-taggable-on'
+gem 'acts-as-taggable-on', '~> 6.0'
 gem 'acts_as_votable'
 
 gem 'ransack'
@@ -28,6 +28,8 @@ gem 'initial_avatar'
 
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+
+gem 'order_as_specified'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
