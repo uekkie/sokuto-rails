@@ -3,7 +3,7 @@ class Tag < ActsAsTaggableOn::Tag
 
   extend OrderAsSpecified
 
-  scope :query_with, ->(type) {
+  scope :order_by, ->(type) {
     case type
     when 'new'
       # 質問の作成日順に

@@ -11,10 +11,13 @@ class Question < ApplicationRecord
     includes(:user).tagged_with(tag_name).order(created_at: :desc)
   }
 
-  scope :query_with, ->(type) {
+  scope :no_answers, -> {
+    where(answers_count: 0)
+  }
+  scope :order_by, ->(type) {
     case type
     when 'no_answer'
-      where(answers_count: 0).order(:created_at)
+      no_answers.order(created_at: :asc)
     when 'votes'
       order(cached_votes_score: :desc)
     else
