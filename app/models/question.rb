@@ -11,6 +11,10 @@ class Question < ApplicationRecord
     includes(:user).tagged_with(tag_name).order(created_at: :desc)
   }
 
+  scope :newer_tag_ids, -> {
+    order(created_at: :desc).includes(:tags).pluck(:tag_id).compact.uniq
+  }
+
   scope :no_answers, -> {
     where(answers_count: 0)
   }

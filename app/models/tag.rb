@@ -7,7 +7,7 @@ class Tag < ActsAsTaggableOn::Tag
     case type
     when 'new'
       # 質問の作成日順に
-      newer_tag_ids = Question.all.order(created_at: :desc).includes(:tags).pluck(:tag_id).compact.uniq
+      newer_tag_ids = Question.newer_tag_ids
       Tag.order_as_specified(id: newer_tag_ids)
 
     when 'name'
