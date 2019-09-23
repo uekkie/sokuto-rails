@@ -1,0 +1,23 @@
+.row
+  - if user_signed_in?
+    .col-5
+      %h3 質問
+    .col-2
+      = link_to "質問する", new_loggedin_question_path, class: "btn btn-primary"
+  - else
+    .col-5
+      %h3 上位の質問
+%hr
+  %ul.nav.nav-tabs{ role: "tab_list" }
+    %li.nav-item{ role: "presentation" }
+      = link_to '人気', questions_path(query: 'popular'), class: "nav-link #{active('popular')}"
+    %li.nav-item{ role: "presentation" }
+      = link_to '今週', questions_path(query: 'in_week'), class: "nav-link #{active('in_week')}"
+    %li.nav-item{ role: "presentation" }
+      = link_to '今月', questions_path(query: 'in_month'), class: "nav-link #{active('in_month')}"
+
+  .tab-content
+    .tab-pane.active{ role: "tab_panel" }
+      %p
+        = render @questions
+  = paginate @questions
