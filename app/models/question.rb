@@ -15,8 +15,26 @@ class Question < ApplicationRecord
     order(created_at: :desc).includes(:tags).pluck(:tag_id).compact.uniq
   }
 
+  scope :recent, -> {
+    order(created_at: :desc)
+  }
   scope :no_answers, -> {
     where(answers_count: 0)
+  }
+
+  scope :in_week, -> {
+    where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day)
+  }
+  scope :in_month, -> {
+    where(created_at: 1.month.ago.beginning_of_day..Time.zone.now.end_of_day)
+  }
+  scope :filter_by, ->(filter) {
+    case filter
+    when 'in_week'
+      in_week.recent
+    when 'in_month'
+      in_month.recent
+    end
   }
   scope :order_by, ->(type) {
     case type
@@ -24,8 +42,8 @@ class Question < ApplicationRecord
       no_answers.order(created_at: :asc)
     when 'votes'
       order(cached_votes_score: :desc)
-    else
-      order(created_at: :desc)
+    when 'popular'
+      order(answers_count: :desc)
     end
   }
 
