@@ -1,12 +1,10 @@
 .row
+  .col-5
+    %h3 すべての質問
   - if user_signed_in?
-    .col-5
-      %h3 質問
     .col-2
       = link_to "質問する", new_loggedin_question_path, class: "btn btn-primary"
-  - else
-    .col-5
-      %h3 すべての質問
+
 %hr
   %ul.nav.nav-tabs{ role: "tab_list" }
     %li.nav-item{ role: "presentation" }

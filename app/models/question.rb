@@ -1,6 +1,7 @@
 class Question < ApplicationRecord
   acts_as_ordered_taggable
   acts_as_votable
+  is_impressionable :counter_cache => true, :column_name => :impressions_count
 
   validates :title, presence: true
 
@@ -43,7 +44,11 @@ class Question < ApplicationRecord
     when 'votes'
       order(cached_votes_score: :desc)
     when 'popular'
-      order(answers_count: :desc)
+      order(
+        { cached_weighted_score: :desc },
+        { impressions_count: :desc },
+        { answers_count: :desc }
+      )
     end
   }
 
@@ -53,5 +58,9 @@ class Question < ApplicationRecord
 
   def persisted_answers
     answers.where.not(id: nil).includes(:user).order(:created_at)
+  end
+
+  def popular_score
+    answers_count + impressions_count + cached_weighted_score
   end
 end

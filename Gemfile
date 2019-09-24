@@ -31,6 +31,8 @@ gem 'devise-i18n-views'
 
 gem 'order_as_specified'
 
+gem 'impressionist'
+
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'pry-rails'
