@@ -1,6 +1,7 @@
 class Question < ApplicationRecord
   acts_as_ordered_taggable
   acts_as_votable
+  is_impressionable
 
   validates :title, presence: true
 

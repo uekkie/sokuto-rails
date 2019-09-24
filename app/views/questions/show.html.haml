@@ -8,6 +8,8 @@
       = render 'questions/vote', question: @question
     .col
       .content=@question.content
+  .row
+    = "閲覧数： #{@question.impressionist_count}"
 
   - if current_user == @question.user
     = link_to '編集', edit_loggedin_question_path(@question)
