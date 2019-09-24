@@ -6,6 +6,9 @@
     .row
       %strong= question.answers_count
       回答
+    .row
+      %strong= question.impressions_count
+      閲覧
   .col-10
     .title= link_to question.title, question
     .body= question.truncated_content
