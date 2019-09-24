@@ -124,6 +124,8 @@ GEM
       railties (>= 4.0.1)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
+    impressionist (1.6.1)
+      nokogiri (~> 1)
     initial_avatar (0.2.0)
     jaro_winkler (1.5.3)
     jbuilder (2.9.1)
@@ -350,6 +352,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   hamlit-rails
+  impressionist
   initial_avatar
   jbuilder (~> 2.5)
   jquery-rails
