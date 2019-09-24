@@ -7,6 +7,8 @@ class TagsController < ApplicationController
 
   def show
     @tag = ActsAsTaggableOn::Tag.find(params[:id])
-    @tagged_questions = Question.includes(%i[user tags]).tagged_with(@tag.name).order(created_at: :desc)
+    @tagged_questions = Question.includes(%i[user tags])
+                          .tagged_with(tag_name)
+                          .recent
   end
 end

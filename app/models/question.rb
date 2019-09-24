@@ -8,12 +8,8 @@ class Question < ApplicationRecord
   belongs_to :user
   has_many :answers, dependent: :destroy
 
-  scope :with_tagged_questions, lambda {|tag_name|
-    includes(:user).tagged_with(tag_name).order(created_at: :desc)
-  }
-
   scope :newer_tag_ids, -> {
-    order(created_at: :desc).includes(:tags).pluck(:tag_id).compact.uniq
+    recent.includes(:tags).pluck(:tag_id).compact.uniq
   }
 
   scope :recent, -> {
