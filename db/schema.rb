@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 2019_09_24_023941) do
     t.integer "cached_weighted_total", default: 0
     t.float "cached_weighted_average", default: 0.0
     t.integer "answers_count", default: 0
-    t.integer "impressions_count", default: 0
+    t.integer "impressions_count", default: 0, null: false
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
