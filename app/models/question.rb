@@ -1,7 +1,7 @@
 class Question < ApplicationRecord
   acts_as_ordered_taggable
   acts_as_votable
-  is_impressionable :counter_cache => true, :column_name => :impressions_count
+  is_impressionable :counter_cache => true
 
   validates :title, presence: true
 
@@ -40,11 +40,7 @@ class Question < ApplicationRecord
     when 'votes'
       order(cached_votes_score: :desc)
     when 'popular'
-      order(
-        { cached_weighted_score: :desc },
-        { impressions_count: :desc },
-        { answers_count: :desc }
-      )
+      order('(cached_weighted_score + impressions_count + answers_count) DESC')
     end
   }
 
