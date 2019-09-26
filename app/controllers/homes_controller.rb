@@ -1,11 +1,9 @@
 class HomesController < ApplicationController
 
   def index
-    order      = params[:order]
-    filter     = params[:filter]
     @questions = Question
-                     .filter_by(filter)
-                     .order_by(order)
+                     .filter_by(params[:filter])
+                     .order_by(params[:order])
                      .page(params[:page])
                      .includes(%i[user tags])
 
