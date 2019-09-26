@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.feature "Questions", type: :system do
 
+  before do
+    driven_by :selenium_chrome_headless
+  end
+
   let!(:user) { create(:user) }
 
   feature 'ログインユーザーは質問を作れる' do
