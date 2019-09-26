@@ -6,8 +6,8 @@ class HomesController < ApplicationController
     @questions = Question
                      .filter_by(@filter)
                      .order_by(@order)
-                      .page(params[:page])
-                      .includes(%i[user tags])
+                     .page(params[:page])
+                     .includes(%i[user tags])
 
   end
 end
