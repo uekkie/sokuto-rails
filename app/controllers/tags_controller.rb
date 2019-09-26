@@ -8,7 +8,7 @@ class TagsController < ApplicationController
   def show
     @tag = ActsAsTaggableOn::Tag.find(params[:id])
     @tagged_questions = Question.includes(%i[user tags])
-                          .tagged_with(tag_name)
+                            .tagged_with(@tag.name)
                           .recent
   end
 end

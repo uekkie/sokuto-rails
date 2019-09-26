@@ -8,10 +8,6 @@ class Question < ApplicationRecord
   belongs_to :user
   has_many :answers, dependent: :destroy
 
-  scope :newer_tag_ids, -> {
-    recent.includes(:tags).pluck(:tag_id).compact.uniq
-  }
-
   scope :recent, -> {
     order(created_at: :desc)
   }
@@ -22,9 +18,11 @@ class Question < ApplicationRecord
   scope :in_week, -> {
     where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day)
   }
+
   scope :in_month, -> {
     where(created_at: 1.month.ago.beginning_of_day..Time.zone.now.end_of_day)
   }
+
   scope :filter_by, ->(filter) {
     case filter
     when 'in_week'
@@ -33,6 +31,7 @@ class Question < ApplicationRecord
       in_month.recent
     end
   }
+
   scope :order_by, ->(type) {
     case type
     when 'no_answer'
