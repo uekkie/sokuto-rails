@@ -29,8 +29,6 @@ gem 'initial_avatar'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 
-gem 'order_as_specified'
-
 gem 'impressionist'
 
 group :development, :test do
