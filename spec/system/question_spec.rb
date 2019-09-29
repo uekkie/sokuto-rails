@@ -12,7 +12,7 @@ RSpec.feature "Questions", type: :system do
     before { sign_in user }
 
     scenario '質問の作成' do
-      visit root_path
+      visit questions_path
       click_on '質問する'
 
       fill_in 'タイトル', with: 'プログラマーにとって大切なことはなんですか'
