@@ -13,8 +13,9 @@ describe 'ホームページ' do
 
   it '人気、今週、今月のタブが存在すること' do
     visit root_url
-    %w(人気 今週 今月).each { |content|
-      expect(page).to have_content content
-    }
+
+    expect(page).to have_content '人気'
+    expect(page).to have_content '今週'
+    expect(page).to have_content '今月'
   end
 end
