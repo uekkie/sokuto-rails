@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.feature "Users", type: :system do
 
+  before do
+    driven_by :selenium_chrome_headless
+  end
+
   let!(:user) { create(:user) }
 
   scenario "ログインに失敗すること" do

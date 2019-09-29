@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  root to: "questions#index"
+  root to: "homes#index"
   devise_for :users, controllers: {
       registrations: 'users/registrations'
   }
+
+  resources :homes, only: %i(index)
 
   resources :questions, only: %i(index show)
 
