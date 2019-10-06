@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Tags", type: :system do
+describe "Tags", type: :system do
   it '人気、名前、新規のタブが存在すること' do
     visit tags_url
 

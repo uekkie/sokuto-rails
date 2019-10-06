@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Users", type: :system do
+describe "Users", type: :system do
 
   before do
     driven_by :selenium_chrome_headless

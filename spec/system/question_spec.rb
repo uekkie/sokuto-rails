@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Questions", type: :system do
+describe "Questions", type: :system do
 
   before do
     driven_by :selenium_chrome_headless
