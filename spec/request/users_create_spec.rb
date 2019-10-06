@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'POST /users', type: :request do
+describe 'POST /users', type: :request do
   context 'JSONでのリクエストは受け付けない' do
     it '406 not_acceptableを返す' do
       post '/users', params: {

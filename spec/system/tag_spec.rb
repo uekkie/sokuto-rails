@@ -70,7 +70,6 @@ describe "Tags", type: :system do
       end
     end
 
-
     it '新規：あたらしいタグ順になる' do
       create(:question, user: user, tag_list: %w(日本))
       create(:question, user: user, tag_list: %w(アジア))
