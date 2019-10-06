@@ -16,7 +16,11 @@ describe "Questions", type: :system do
   end
 
   context 'ログインしているとき' do
-    before { sign_in user }
+    before do
+      sign_in user
+      visit questions_path
+    end
+
     scenario '質問がつくれる' do
       click_on '質問する'
 

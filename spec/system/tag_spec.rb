@@ -21,7 +21,7 @@ describe "Tags", type: :system do
   end
 
   it '質問の詳細ページにタグがある' do
-    create(:question, user: user, tag_list: ['Google', 'Yahoo'])
+    question = create(:question, user: user, tag_list: ['Google', 'Yahoo'])
     visit question_path(question)
     expect(page).to have_content 'Google'
     expect(page).to have_content 'Yahoo'
