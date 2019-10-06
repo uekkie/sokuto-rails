@@ -9,6 +9,6 @@ class TagsController < ApplicationController
     @tag = ActsAsTaggableOn::Tag.find(params[:id])
     @tagged_questions = Question.includes(%i[user tags])
                             .tagged_with(@tag.name)
-                          .recent
+                            .recent
   end
 end
