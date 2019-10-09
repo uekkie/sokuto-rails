@@ -8,6 +8,7 @@ describe "Questions", type: :system do
   end
 
   let!(:user) { create(:user) }
+  let!(:question) { create(:question, user: user) }
 
   it '新着、得票数、未回答のタブが存在すること' do
     expect(page).to have_content '新着'
@@ -60,6 +61,22 @@ describe "Questions", type: :system do
       expect(page).to have_content '質問「プログラマーにとって大切なことはなんですか」を作成しました'
       expect(page).to have_content 'プログラマーにとって大切なことはなんですか'
       expect(page).to have_content '職業 プログラマー 考え方'
+    end
+  end
+
+  describe '自分の質問に対して' do
+    it '更新できる' do
+      sign_in user
+
+      visit question_path(question)
+      within(:css, ".question > .actions") do
+        click_on '編集'
+      end
+
+      fill_in '質問の内容', with: '記事を更新しました'
+      click_on '更新する'
+
+      expect(question.reload.content).to eq '記事を更新しました'
     end
   end
 end
