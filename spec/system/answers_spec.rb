@@ -5,6 +5,7 @@ describe "Answers", type: :system do
   let!(:user_ueki) { create(:user_ueki) }
   let!(:question_by_userA) { create(:question, user: user) }
   let!(:question_by_self) { create(:question, user: user_ueki) }
+  let!(:answer) { create(:answer, user: user_ueki, question: question_by_userA) }
 
   before do
     driven_by :selenium_chrome_headless
@@ -45,7 +46,15 @@ describe "Answers", type: :system do
     end
 
     context '自分の質問のとき' do
-      it '回答できる'
+      it '回答できる' do
+        visit question_path(question_by_self)
+        expect {
+          fill_in 'answer_body', with: '補足があればおねがいします'
+          click_on '投稿する'
+        }.to change { Answer.count }.by(1)
+
+        expect(current_path).to eq question_path(question_by_self)
+      end
     end
 
     describe '自分の回答に対して' do
