@@ -21,8 +21,7 @@
              method: :delete, data: { confirm: 'よろしいですか？' }
         \|
   %hr
-    %ul.list-group
-      = render partial: 'answers/answer', collection: @question.persisted_answers
+    = render partial: 'answers/answers_list', collection: @question.persisted_answers
 %br
 
   - if user_signed_in?

@@ -58,7 +58,20 @@ describe "Answers", type: :system do
     end
 
     describe '自分の回答に対して' do
-      it '更新できる'
+      it '更新できる' do
+        visit question_path(answer.question)
+        within(:css, 'ul.answers > li') do
+          expect(page).to have_content answer.user.name
+          expect(page).to have_content answer.content
+
+          click_on '編集'
+
+          fill_in '回答', with: 'やっぱりこの回答にします'
+          click_on '更新'
+          expect(page).to have_content 'やっぱりこの回答にします'
+
+        end
+      end
       it '削除できる'
     end
   end

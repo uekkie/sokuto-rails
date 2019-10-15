@@ -1,6 +1,8 @@
-%li.list-group-item
+.answer{ data: { comment: answer.id } }
   - user = answer.user
   = link_to user.name, user_path(user)
   = l answer.created_at, format: :short
+  - if user == current_user
+    =link_to '編集', edit_loggedin_question_answer_path(answer.question, answer), remote: true
   %br
   = answer.content
