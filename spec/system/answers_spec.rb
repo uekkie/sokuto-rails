@@ -72,7 +72,18 @@ describe "Answers", type: :system do
 
         end
       end
-      it '削除できる'
+      it '削除できる' do
+        visit question_path(answer.question)
+        within(:css, 'ul.answers > li') do
+          click_on '削除'
+        end
+        expect {
+          expect(page.driver.browser.switch_to.alert.text).to eq "削除してよろしいですか？"
+          page.driver.browser.switch_to.alert.accept
+
+          expect(page).to have_content 'コメントを削除しました'
+        }.to change { Answer.count }.by(-1)
+      end
     end
   end
 end

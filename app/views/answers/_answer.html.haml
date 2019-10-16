@@ -4,5 +4,6 @@
   = l answer.created_at, format: :short
   - if user == current_user
     =link_to '編集', edit_loggedin_question_answer_path(answer.question, answer), remote: true
+    =link_to '削除', loggedin_question_answer_path(answer.question, answer), method: :delete, data: {confirm: '削除してよろしいですか？' }
   %br
   = answer.content
