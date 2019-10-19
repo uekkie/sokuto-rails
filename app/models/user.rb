@@ -8,4 +8,12 @@ class User < ApplicationRecord
 
   has_many :questions, dependent: :destroy
   has_many :answers, dependent: :destroy
+
+
+  def credit_score
+    [
+        questions.map(&:cached_votes_up).inject(0, :+) * 5,
+        answers.map(&:cached_votes_up).inject(0, :+) * 10,
+    ].inject(0, :+)
+  end
 end
