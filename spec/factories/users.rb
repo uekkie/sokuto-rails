@@ -7,7 +7,11 @@ FactoryBot.define do
     confirmed_at { Time.now - 100 }
   end
 
-  factory :ueki do
-    name { 'Ueki' }
+  factory :user_ueki, class: User do
+    name { 'ueki' }
+    email { "ueki@test.com" }
+    password { 'password' }
+    password_confirmation { 'password' }
+    confirmed_at { Time.now - 100 }
   end
 end

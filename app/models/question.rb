@@ -1,4 +1,6 @@
 class Question < ApplicationRecord
+  paginates_per 10
+
   acts_as_ordered_taggable
   acts_as_votable
   is_impressionable :counter_cache => true

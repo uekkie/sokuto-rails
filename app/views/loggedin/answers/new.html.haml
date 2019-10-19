@@ -5,7 +5,8 @@
         - @answer.errors.full_messages.each do |message|
           %li= message
 
-  .field
-    = f.text_area :content, id: :answer_body, placeholder: "回答", class: 'form-control'
-  .actions.text-right
-    = f.submit '投稿する', class: 'btn btn-primary mt-1'
+  .answers-box
+    .field
+      = f.text_area :content, id: :answer_body, placeholder: "回答", class: 'form-control'
+    .actions.text-right
+      = f.submit '投稿する', class: 'btn btn-primary mt-1'

@@ -8,6 +8,7 @@ describe "Questions", type: :system do
   end
 
   let!(:user) { create(:user) }
+  let!(:question) { create(:question, user: user) }
 
   it '新着、得票数、未回答のタブが存在すること' do
     expect(page).to have_content '新着'
@@ -60,6 +61,48 @@ describe "Questions", type: :system do
       expect(page).to have_content '質問「プログラマーにとって大切なことはなんですか」を作成しました'
       expect(page).to have_content 'プログラマーにとって大切なことはなんですか'
       expect(page).to have_content '職業 プログラマー 考え方'
+    end
+  end
+
+  describe '自分の質問に対して' do
+    it '更新できる' do
+      sign_in user
+
+      visit question_path(question)
+      within(:css, ".question > .actions") do
+        click_on '編集'
+      end
+
+      fill_in '質問の内容', with: '記事を更新しました'
+      click_on '更新する'
+
+      expect(question.reload.content).to eq '記事を更新しました'
+    end
+  end
+
+
+  describe '質問一覧の表示件数' do
+    before do
+      50.times { |i| create(:question, user: user, title: "質問その#{i}", content: "質問#{i}の本文です。") }
+    end
+
+    it '10件、30件、50件の表示ができる' do
+      expect(Question.count).to be >= 50
+
+      visit questions_path
+      expect(all('.question').size).to eq 10
+      # '30件をクリックすると、30件まで表示される' do
+      click_on '30件'
+      expect(page).to have_content 'すべての質問'
+      expect(all('.question').size).to eq 30
+      # '50件をクリックすると、50件まで表示される' do
+      click_on '50件'
+      expect(page).to have_content 'すべての質問'
+      expect(all('.question').size).to eq 50
+
+      click_on '10件'
+      expect(page).to have_content 'すべての質問'
+      expect(all('.question').size).to eq 10
     end
   end
 end
