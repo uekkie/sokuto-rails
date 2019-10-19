@@ -36,9 +36,24 @@ RSpec.describe '信用度', type: :model do
   end
 
   describe '信用度は以下の条件で失効する' do
-    it '質問への反対票: −2'
-    it '回答への反対票: −2'
-    it '回答に反対投票した: −1'
+    it '質問への反対票: −2' do
+      expect(question.user.credit_score).to eq 0
+      question.downvote_by voted_user
+      expect(question.user.reload.credit_score).to eq -2
+    end
+
+    it '回答への反対票: −2' do
+      expect(answer.user.credit_score).to eq 0
+      answer.downvote_by voted_user
+      expect(answer.user.reload.credit_score).to eq -2
+    end
+
+    it '回答に反対投票した: −1' do
+      expect(voted_user.credit_score).to eq 0
+      answer.downvote_by voted_user
+      expect(voted_user.reload.credit_score).to eq -1
+    end
+
     it '質問にお礼を提示した: -お礼の全額'
     it '自分の投稿が、6 件のスパムまたは不快の通報を受けた:−100'
   end
