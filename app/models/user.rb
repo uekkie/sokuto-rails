@@ -14,6 +14,8 @@ class User < ApplicationRecord
     [
         questions.map(&:cached_votes_up).inject(0, :+) * 5,
         answers.map(&:cached_votes_up).inject(0, :+) * 10,
+        answers.where(accepted: true).count * 15,
+        questions.select(&:has_accepted_answer?).count * 2,
     ].inject(0, :+)
   end
 end

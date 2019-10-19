@@ -2,10 +2,11 @@ require 'rails_helper'
 
 RSpec.describe '信用度', type: :model do
 
-  let!(:user) { FactoryBot.create(:user) }
-  let!(:voted_user) { FactoryBot.create(:user_ueki) }
-  let!(:question) { FactoryBot.create(:question, user: user) }
-  let!(:answer) { FactoryBot.create(:answer, user: user, question: question) }
+  let!(:questioned_user) { FactoryBot.create(:user) }
+  let!(:answered_user) { FactoryBot.create(:user) }
+  let!(:voted_user) { FactoryBot.create(:user) }
+  let!(:question) { FactoryBot.create(:question, user: questioned_user) }
+  let!(:answer) { FactoryBot.create(:answer, user: answered_user, question: question) }
 
   describe '信用度は以下の条件で獲得可能' do
     it ' 質問への賛成票: +5' do
@@ -21,10 +22,13 @@ RSpec.describe '信用度', type: :model do
     end
 
     it ' 回答が「承認済み」とマークされた: +15 (承認者には +2)' do
-      # expect([]).to be_empty
-      # expect(question.answers.where(accepted: true)).to be_empty
-
+      expect(answer.question.answers.where(accepted: true)).to be_empty
+      answer.update!(accepted: true)
+      expect(question.answers.where(accepted: true)).to_not be_empty
+      expect(answer.user.credit_score).to eq 15
+      expect(answer.question.user.credit_score).to eq 2
     end
+
     it ' 推奨した編集内容が承認された: +2 (ユーザーあたり合計 +1000 まで)'
     it ' 回答にお礼が授与された: +お礼の全額'
     it ' 回答に自動的にお礼が授与された: お礼の額の +1/2 (お礼の仕組みの詳細を読む) '
