@@ -79,4 +79,37 @@ describe "Questions", type: :system do
       expect(question.reload.content).to eq '記事を更新しました'
     end
   end
+
+
+  describe '質問一覧の表示件数' do
+    before do
+      50.times { |i| create(:question, user: user, title: "質問その#{i}", content: "質問#{i}の本文です。") }
+    end
+
+    it '10件、30件、50件の表示ができる' do
+      expect(Question.count).to be >= 50
+
+      visit questions_path
+      expect(all('.question').size).to eq 10
+      # '30件をクリックすると、30件まで表示される' do
+      click_on '30件'
+      expect(page).to have_content 'すべての質問'
+      expect(all('.question').size).to eq 30
+      # '50件をクリックすると、50件まで表示される' do
+      click_on '50件'
+      expect(page).to have_content 'すべての質問'
+      expect(all('.question').size).to eq 50
+
+      click_on '10件'
+      expect(page).to have_content 'すべての質問'
+      expect(all('.question').size).to eq 10
+    end
+  end
+
+  it '一覧表示は、ページャで画面を切り替えが可能'
+  it '各一覧表示の条件に該当するタグが10件表示される'
+  it '関連するタグを表示ボタンを押すと関連するタグ全てが表示される'
+  it '初期表示時、もしくは`リンク最多タブ`をクリックすれば最もリンク数が多い質問が一覧表示される'
+  it '`新着タブ`をクリックすれば最近投稿された質問が一覧表示される'
+  it '`票タブ`をクリックすれば得票数最多の質問が一覧表示される'
 end

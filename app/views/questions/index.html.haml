@@ -6,6 +6,11 @@
       = link_to "質問する", new_loggedin_question_path, class: "btn btn-primary"
 
 %hr
+  .page-per-box
+    = link_to '10件', questions_path(page_per: 10)
+    = link_to '30件', questions_path(page_per: 30)
+    = link_to '50件', questions_path(page_per: 50)
+
   %ul.nav.nav-tabs{ role: "tab_list" }
     %li.nav-item{ role: "presentation" }
       = link_to '新着', questions_path(query: 'newest'), class: "nav-link #{active('newest')}"
@@ -14,7 +19,7 @@
     %li.nav-item{ role: "presentation" }
       = link_to '未回答', questions_path(query: 'no_answer'), class: "nav-link #{active('no_answer')}"
 
-  .tab-content
+  .tab-content.questions
     .tab-pane.active{ role: "tab_panel" }
       %p
         = render @questions

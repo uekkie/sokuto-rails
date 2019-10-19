@@ -7,6 +7,7 @@ class QuestionsController < ApplicationController
     @query_type = params[:query] || 'newest'
     @questions  = Question.order_by(@query_type)
                       .page(params[:page])
+                      .per(params[:page_per])
                       .includes(%i[user tags])
   end
 
