@@ -2,32 +2,42 @@ require 'rails_helper'
 
 RSpec.describe '信用度', type: :model do
 
-  let!(:questioned_user) { FactoryBot.create(:user) }
+  let!(:user) { FactoryBot.create(:user) }
+  let!(:user2) { FactoryBot.create(:user) }
+  let!(:user3) { FactoryBot.create(:user) }
   let!(:answered_user) { FactoryBot.create(:user) }
   let!(:voted_user) { FactoryBot.create(:user) }
-  let!(:question) { FactoryBot.create(:question, user: questioned_user) }
+  let!(:question) { FactoryBot.create(:question, user: user) }
   let!(:answer) { FactoryBot.create(:answer, user: answered_user, question: question) }
 
   describe '信用度は以下の条件で獲得可能' do
-    it ' 質問への賛成票: +5' do
-      expect(question.user.credit_score).to eq 0
-      question.upvote_by voted_user
-      expect(question.user.reload.credit_score).to eq 5
+    it "信頼度の初期値は1" do
+      expect(user.credit_score).to eq 1
+    end
+
+    it "質問への賛成で+5" do
+      question.up_vote_by(user2)
+      expect(user.credit_score).to eq 6
     end
 
     it ' 回答への賛成票: +10' do
-      expect(answer.user.credit_score).to eq 0
-      answer.upvote_by voted_user
+      expect(answer.user.credit_score).to eq 1
+      answer.up_vote_by voted_user
       expect(answer.user.reload.credit_score).to eq 10
     end
 
-    it ' 回答が「承認済み」とマークされた: +15 (承認者には +2)' do
-      expect(answer.question.answers.where(accepted: true)).to be_empty
-      answer.update!(accepted: true)
-      expect(question.answers.where(accepted: true)).to_not be_empty
-      expect(answer.user.credit_score).to eq 15
-      expect(answer.question.user.credit_score).to eq 2
+    it ' 回答が「承認済み」とマークされた: +15' do
+      answer.accepted_by answer.question.user
+      expect(answer.user.credit_score).to eq 16
     end
+
+    it ' 回答に「承認済み」マーク: 承認者には +2' do
+      answer.accepted_by answer.question.user
+      answer.question.user.reload
+
+      expect(answer.question.user.credit_score).to eq 3
+    end
+
 
     it ' 推奨した編集内容が承認された: +2 (ユーザーあたり合計 +1000 まで)'
     it ' 回答にお礼が授与された: +お礼の全額'
@@ -36,21 +46,33 @@ RSpec.describe '信用度', type: :model do
   end
 
   describe '信用度は以下の条件で失効する' do
+    it "質問への反対で-2" do
+      question.down_vote_by(user2)
+      expect(user.credit_score).to eq -1
+    end
+
+    it "質問への賛成・反対1つずつで+4" do
+      question.down_vote_by(user2)
+      user.reload
+      question.up_vote_by(user3)
+      expect(user.credit_score).to eq 4
+    end
+
     it '質問への反対票: −2' do
       expect(question.user.credit_score).to eq 0
-      question.downvote_by voted_user
+      question.down_vote_by voted_user
       expect(question.user.reload.credit_score).to eq -2
     end
 
     it '回答への反対票: −2' do
       expect(answer.user.credit_score).to eq 0
-      answer.downvote_by voted_user
+      answer.down_vote_by voted_user
       expect(answer.user.reload.credit_score).to eq -2
     end
 
     it '回答に反対投票した: −1' do
       expect(voted_user.credit_score).to eq 0
-      answer.downvote_by voted_user
+      answer.down_vote_by voted_user
       expect(voted_user.reload.credit_score).to eq -1
     end
 
