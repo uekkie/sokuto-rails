@@ -60,7 +60,6 @@ class Question < ApplicationRecord
   def up_vote_by(user)
     Question.transaction do
       self.upvote_by user
-      # self.increment!(:cached_votes_up, 1)
       self.user.update_credit_score
     end
   end
@@ -68,7 +67,6 @@ class Question < ApplicationRecord
   def down_vote_by(user)
     Question.transaction do
       self.downvote_by user
-      # self.increment!(:cached_votes_down, 1)
       self.user.update_credit_score
     end
   end
