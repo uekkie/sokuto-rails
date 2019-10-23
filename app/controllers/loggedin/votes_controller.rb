@@ -3,8 +3,6 @@ class Loggedin::VotesController < Loggedin::ApplicationController
 
   def up_vote
     @question.upvote_by current_user
-    # @question.user.credit_score+=5
-    # @question.user.save!
     redirect_to question_url(@question)
   end
 

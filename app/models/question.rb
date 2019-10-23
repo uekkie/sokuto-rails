@@ -45,10 +45,6 @@ class Question < ApplicationRecord
     end
   }
 
-  def has_accepted_answer?
-    answers.where(accepted: true).count != 0
-  end
-
   def truncated_content
     content.truncate(40)
   end
