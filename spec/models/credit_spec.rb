@@ -33,8 +33,6 @@ RSpec.describe '信用度', type: :model do
 
     it ' 回答に「承認済み」マーク: 承認者には +2' do
       answer.accepted_by answer.question.user
-      answer.question.user.reload
-
       expect(answer.question.user.credit_score).to eq 3
     end
 
