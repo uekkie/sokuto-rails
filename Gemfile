@@ -52,6 +52,7 @@ group :development do
   gem 'faker'
   gem 'activerecord-import'
   gem 'rubocop', '~> 0.69.0', require: false
+  gem 'rubocop-performance'
 end
 
 group :test do
