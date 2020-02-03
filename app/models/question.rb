@@ -56,4 +56,18 @@ class Question < ApplicationRecord
   def popular_score
     answers_count + impressions_count + cached_weighted_score
   end
+
+  def up_vote_by(user)
+    Question.transaction do
+      self.upvote_by user
+      self.user.update_credit_score
+    end
+  end
+
+  def down_vote_by(user)
+    Question.transaction do
+      self.downvote_by user
+      self.user.update_credit_score
+    end
+  end
 end
