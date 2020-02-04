@@ -1,24 +1,27 @@
-%h1=@question.title
+%h1.title=@question.title
 
-= render @question.tags
+.tags= render @question.tags
 
 .container.mt-2
-  .row
-    .voting.pr-5
-      = render 'questions/vote', question: @question
-    .col
-      .content=@question.content
+  .question
+    .row
+      .voting.pr-5
+        = render 'questions/vote', question: @question
+      .col
+        .content=@question.content
+    .row
+      = "閲覧数： #{@question.impressionist_count}"
 
-  - if current_user == @question.user
-    = link_to '編集', edit_loggedin_question_path(@question)
-    \|
-    = link_to '削除',
-         loggedin_question_path(@question),
-         method: :delete, data: { confirm: 'よろしいですか？' }
-    \|
+    .row.actions
+      - if current_user == @question.user
+        = link_to '編集', edit_loggedin_question_path(@question)
+        \|
+        = link_to '削除',
+             loggedin_question_path(@question),
+             method: :delete, data: { confirm: 'よろしいですか？' }
+        \|
   %hr
-    %ul.list-group
-      = render @answers
+    = render partial: 'answers/answers_list', collection: @question.persisted_answers
 %br
 
   - if user_signed_in?

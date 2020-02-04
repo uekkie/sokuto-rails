@@ -1,0 +1,4 @@
+%ul.list-group.answers
+  - @question.persisted_answers.each do |answer|
+    %li.list-group-item
+      = render partial: 'answers/answer', locals: { answer: answer }

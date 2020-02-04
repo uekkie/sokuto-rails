@@ -1,32 +1,35 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.3'
+ruby '2.6.4'
 
-gem 'rails', '~> 5.2.2.1'
+gem 'rails', '~> 5.2.3'
 
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 3.11'
+gem 'puma'
 gem 'sassc-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
-gem 'devise'
+gem 'devise', ">= 4.7.1"
 gem 'hamlit-rails'
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'rails-i18n'
-gem 'acts-as-taggable-on'
+gem 'acts-as-taggable-on', '~> 6.0'
 gem 'acts_as_votable'
 
 gem 'ransack'
+gem 'simple_form'
 gem 'kaminari'
 gem 'initial_avatar'
 
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+
+gem 'impressionist'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
@@ -51,7 +54,7 @@ group :development do
   gem 'bundler-audit'
   gem 'faker'
   gem 'activerecord-import'
-  gem 'rubocop', '~> 0.69.0', require: false
+  gem 'rubocop', '~> 0.74.0', require: false
 end
 
 group :test do

@@ -1,0 +1,1 @@
+$('.answer[data-comment="' + <%= @answer.id %> +'"]').parent().html("<%= j(render 'edit_answer', locals: { answer: @answer }) %>");

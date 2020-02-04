@@ -1,24 +1,26 @@
 .row
+  .col-5
+    %h3 すべての質問
   - if user_signed_in?
-    .col-5
-      %h3 質問
     .col-2
       = link_to "質問する", new_loggedin_question_path, class: "btn btn-primary"
-  - else
-    .col-5
-      %h3 すべての質問
-%hr
-  = search_form_for @query do |f|
-    %ul.nav.nav-tabs{role:"tab_list"}
-      %li.nav-item{role: "presentation"}
-        = link_to '新着', questions_path(q:{s: 'created_at desc'}), class: "nav-link"
-      %li.nav-item{role:"presentation"}
-        = link_to '得票数', questions_path(q:{s: 'cached_votes_score desc'}), class: "nav-link"
-      %li.nav-item{role:"presentation"}
-        = link_to '未回答', questions_path(q:{answers_count: 0}), class: "nav-link"
 
-  .tab-content
-    .tab-pane.active{role:"tab_panel"}
+%hr
+  .page-per-box
+    = link_to '10件', questions_path(page_per: 10)
+    = link_to '30件', questions_path(page_per: 30)
+    = link_to '50件', questions_path(page_per: 50)
+
+  %ul.nav.nav-tabs{ role: "tab_list" }
+    %li.nav-item{ role: "presentation" }
+      = link_to '新着', questions_path(query: 'newest'), class: "nav-link #{active('newest')}"
+    %li.nav-item{ role: "presentation" }
+      = link_to '得票数', questions_path(query: 'votes'), class: "nav-link #{active('votes')}"
+    %li.nav-item{ role: "presentation" }
+      = link_to '未回答', questions_path(query: 'no_answer'), class: "nav-link #{active('no_answer')}"
+
+  .tab-content.questions
+    .tab-pane.active{ role: "tab_panel" }
       %p
         = render @questions
   = paginate @questions

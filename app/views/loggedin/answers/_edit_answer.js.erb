@@ -1,0 +1,6 @@
+<div class="answer" data-comment="<%= @answer.id %>">
+  <%= form_with(url: loggedin_question_answer_path, model: [@answer.question, @answer], remote: true) do |form| %>
+  <%= form.text_area :content, rows: 3, placeholder: "回答", class: "col-xs-11" %>
+  <%= form.submit '更新', class: 'btn btn-default' %>
+  <% end %>
+</div>

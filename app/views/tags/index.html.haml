@@ -7,11 +7,19 @@
     = f.submit '絞り込む', class: 'btn btn-primary mt-1'
     - if @query.conditions.present?
       = link_to '解除', tags_path, class: 'btn btn-danger mt-1'
-
-- @tags.each_slice(4) do |sliced_tags|
-  .row
-    - sliced_tags.each do |tag|
-      .col-sm-6.col-lg-3
-        = link_to tag.name, tag_path(tag), class: 'badge badge-dark m-1'
-        = "× #{tag.taggings_count}"
+  .orders-btn-group
+    %ul.nav.nav-tabs{ role: "tab_list" }
+      %li.nav-item{ role: "presentation" }
+        = link_to '人気', tags_path(sort: 'popular'), class: "nav-link #{active('popular')}"
+      %li.nav-item{ role: "presentation" }
+        = link_to '名前', tags_path(sort: 'name'), class: "nav-link #{active('name')}"
+      %li.nav-item{ role: "presentation" }
+        = link_to '新規', tags_path(sort: 'new'), class: "nav-link #{active('new')}"
+%ul.tags-list{style: 'list-style: none'}
+  - @tags.each_slice(4) do |sliced_tags|
+    .row
+      - sliced_tags.each do |tag|
+        %li.tag.col-sm-6.col-lg-3
+          = link_to tag.name, tag_path(tag), class: 'badge badge-dark m-1'
+          = "× #{tag.taggings_count}"
 = paginate @tags
