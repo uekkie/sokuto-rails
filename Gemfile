@@ -10,7 +10,7 @@ gem 'puma'
 gem 'sassc-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'turbolinks', '~> 5'
-gem 'jbuilder', '~> 2.5'
+gem 'jbuilder', '~> 2.10'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'devise', ">= 4.7.1"
